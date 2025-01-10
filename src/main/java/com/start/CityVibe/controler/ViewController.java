@@ -18,6 +18,11 @@ public class ViewController {
     }
 
     @GetMapping("/")
+    public String index() {
+        return "index/index";
+    }
+
+    @GetMapping("/login")
     public String login() {
         return "login/custom_login";
     }
