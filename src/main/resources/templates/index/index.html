@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/index/favicon-16x16.png" />
+  <link rel="stylesheet" href="/index/style.css" />
+  <script defer src="/index/script.js"></script>
+
+  <title>Dog</title>
+</head>
+<body>
+<!-- Barra de navegação com o nome do usuário e botão de logout -->
+<header>
+  <nav>
+    <ul>
+      <li><a href="/index">Home</a></li>
+      <li><a href="/profile">Perfil</a></li>
+      <li>
+        <span id="user-name"></span>
+      </li>
+      <li><button onclick="logout()">Sair</button></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="main-container">
+  <!-- Container lateral para adicionar um novo cachorro -->
+  <div class="add-container">
+    <div class="add-icon" id="addIcon">
+      <span>+</span>
+    </div>
+    <div class="add-form" id="addForm" style="display: none">
+
+      <h2 class="title-addform"><span>Register a Dog</span></h2>
+
+      <form id="dogForm">
+        <input
+                type="text"
+                id="name"
+                name="name"
+                maxlength="24"
+                required
+                placeholder="Name"
+        />
+
+        <input
+                type="number"
+                id="age"
+                name="age"
+                required
+                placeholder="Age"
+        />
+
+        <input
+                type="text"
+                id="breed"
+                name="breed"
+                maxlength="24"
+                required
+                placeholder="Breed"
+        />
+
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select Gender</option>
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+        </select>
+
+        <select id="size" name="size" required>
+          <option value="" disabled selected>Select Size</option>
+          <option value="SMALL">Small</option>
+          <option value="MEDIUM">Medium</option>
+          <option value="LARGE">Large</option>
+        </select>
+
+        <input
+                type="url"
+                id="profilePictureUrl"
+                name="profilePictureUrl"
+                required
+                placeholder="Photo URL"
+        />
+
+        <textarea
+                id="description"
+                name="description"
+                maxlength="80"
+                placeholder="Description"></textarea>
+
+        <select id="isNeutered" name="isNeutered" required>
+          <option value="" disabled selected>Is Neutered?</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+
+      </form>
+
+      <div class="add-form-control">
+
+          <button type="submit">Submit</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="dog-container" data-id="">
+    <div class="dog__image-container">
+      <img
+              src="#"
+              alt="dog image"
+              class="dog__image"
+              style="display: none"
+      />
+    </div>
+
+    <div class="dog__info-container">
+      <div class="dog__details">
+        <h1 class="dog__data">
+          <span class="dog__name"></span>
+        </h1>
+        <p class="dog__description"></p>
+        <p class="dog__age"></p>
+        <p class="dog__breed"></p>
+        <p class="dog__size"></p>
+        <p class="dog__gender"></p>
+        <p class="dog__neutered"></p>
+      </div>
+    </div>
+
+    <div class="control">
+      <form class="form">
+
+      </form>
+
+      <div class="buttons">
+        <button class="button btn-left">X</button>
+        <button class="button btn-right">❤️</button>
+      </div>
+
+      <div class="buttons">
+        <button class="button btn-prev">Prev &lt;</button>
+        <button class="button btn-next">Next &gt;</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom-container">
+    <p>© 2024 All rights reserved</p>
+  </div>
+
+  <div class="preloader hidden" id="preloader">
+    <div class="loader" id="loader"></div>
+  </div>
+</div>
+
+</body>
+</html>

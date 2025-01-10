@@ -3,6 +3,7 @@ package com.start.CityVibe.service;
 import com.start.CityVibe.domain.Evento;
 import com.start.CityVibe.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -35,5 +36,9 @@ public class EventoService {
             return true;
         }
         return false;
+    }
+
+    public Page<Evento> getEventosByUserId(Long id, int page, int size) {
+        return null;
     }
 }

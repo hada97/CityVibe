@@ -40,11 +40,25 @@ public class Evento {
     @Column(name = "categoria", nullable = false)
     private String categoria;
 
-    // Tipo de evento (Pago ou Gratuito)
+    // Usando o enum TipoEvento
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo_evento", nullable = false)
-    private String tipoEvento;
+    private TipoEvento tipoEvento;
 
     // Caminho para a capa (imagem)
     @Column(name = "capa", nullable = true)
     private String capa;
+
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", data=" + data +
+                ", hora=" + hora +
+                ", descricao='" + descricao + '\'' +
+                ", tipoEvento=" + tipoEvento +
+                ", capa='" + capa + '\'' +
+                '}';
+    }
 }
