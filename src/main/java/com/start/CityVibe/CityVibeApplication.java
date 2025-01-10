@@ -8,6 +8,9 @@ public class CityVibeApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CityVibeApplication.class, args);
+		System.out.println("============================");
+		System.out.println("============================");
+		System.out.println("============================");
 	}
 
 }
