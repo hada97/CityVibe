@@ -1,6 +1,6 @@
 package com.start.CityVibe.service;
 
-import com.start.CityVibe.domain.Evento;
+import com.start.CityVibe.domain.evento.Evento;
 import com.start.CityVibe.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,7 +1,7 @@
 package com.start.CityVibe.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.start.CityVibe.domain.Evento;
+import com.start.CityVibe.domain.evento.Evento;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

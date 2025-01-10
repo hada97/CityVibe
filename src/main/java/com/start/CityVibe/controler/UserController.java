@@ -1,6 +1,6 @@
 package com.start.CityVibe.controler;
 
-import com.start.CityVibe.domain.Evento;
+import com.start.CityVibe.domain.evento.Evento;
 import com.start.CityVibe.domain.user.*;
 import com.start.CityVibe.repository.UserRepository;
 import com.start.CityVibe.service.EventoService;

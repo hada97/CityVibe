@@ -1,8 +1,11 @@
-package com.start.CityVibe.domain;
+package com.start.CityVibe.domain.evento;
 
+import com.start.CityVibe.domain.TipoEvento;
+import com.start.CityVibe.domain.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
+
 
 @Entity
 @Table(name = "eventos") // Nome da tabela no banco de dados
@@ -44,6 +47,10 @@ public class Evento {
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_evento", nullable = false)
     private TipoEvento tipoEvento;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     // Caminho para a capa (imagem)
     @Column(name = "capa", nullable = true)
