@@ -10,6 +10,20 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringDocConfigurations {
 
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("API CityVibe")
+                        .version("v1")
+                        .description("[GitHub](https://github.com/hada97/CityVibe)\n\n"
+                        ));
+    }
+
+}
+
+/*
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
@@ -20,9 +34,9 @@ public class SpringDocConfigurations {
                                         .scheme("bearer")
                                         .bearerFormat("JWT")))  // Definindo o token JWT
                 .info(new Info()
-                        .title("API TinderPet")
+                        .title("API CityVibe")
                         .version("v1")
                         .description("[GitHub](https://github.com/hada97/CityVibe)\n\n"
                         ));
     }
-}
+ */

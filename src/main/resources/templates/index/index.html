@@ -4,101 +4,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Criar Evento</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <link rel="stylesheet" href="/index/style.css" />
+  <script defer src="/index/script.js"></script>
+
 </head>
 <body>
-<div class="max-w-7xl mx-auto">
-  <header class="flex items-center justify-between py-2 lg:py-4 px-2 lg:px-0">
-    <a class="flex items-center gap-2" href="/">
-      <img src="/koynonya-logo-compressed.webp" class="size-10" alt="Logo">
-      <span class="text-2xl font-bold text-blue-400 hidden lg:block">Koynonya</span>
-    </a>
-    <div class="flex items-center justify-between gap-3 lg:gap-6">
+<div class="container">
+  <header class="header">
+
+    <div class="actions">
       <form action="" method="POST">
-        <button class="bg-blue-400 font-bold text-white rounded-md lg:w-[300px] px-2 py-2 text-xs lg:text-base">Publicar evento</button>
+        <button class="publish-btn">Publicar evento</button>
       </form>
       <form action="" method="POST">
-        <button class="text-blue-400 font-bold text-xs lg:text-base">Entrar</button>
+        <button class="login-btn">Entrar</button>
       </form>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto text-gray-800 mt-10 lg:w-full w-[95%]">
-    <h1 class="text-center font-bold text-2xl">Criar Evento</h1>
-    <form class="w-full flex flex-col items-center mb-24">
-      <div class="w-full h-[300px] rounded-lg overflow-hidden mt-5 border flex items-center justify-center shadow-md cursor-pointer">
-        <div class="flex items-center gap-4">
-          <span>Escolher capa</span>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
-          </svg>
-        </div>
-      </div>
-      <input type="file" accept="image/*" class="hidden" />
-
-      <div class="text-center my-4 flex flex-col items-center gap-2 w-full lg:w-[600px]">
-        <div class="flex lg:flex-row flex-col items-center gap-2 w-full">
-          <input placeholder="Nome do evento" type="text" class="border rounded-md shadow-md w-full lg:w-[65%] px-4 py-2" required value="" />
-          <select class="appearance-none bg-white border rounded-md shadow-md w-full lg:w-[35%] px-4 py-2 text-gray-400" required>
-            <option value="" disabled selected>Tipo de evento</option>
-            <option value="show">Show de Bandas Locais</option>
-            <option value="festival_musica_viva">Festival de Música ao Vivo</option>
-            <option value="show_djs">Show de DJs</option>
-            <option value="festival_musica_eletronica">Festival de Música Eletrônica</option>
-            <option value="show_standup">Show de Stand-Up Comedy</option>
-            <option value="concerto_rock">Concerto de Rock</option>
-            <option value="festival_cultura_pop">Festival de Cultura Pop</option>
-            <option value="evento_gospel">Evento Gospel</option>
-            <option value="encontro_influenciadores">Encontro de Influenciadores e Criadores de Conteúdo</option>
-            <option value="festival_cinema_independente">Festival de Cinema Independente</option>
-            <option value="feira_moda_estilo">Feira de Moda e Estilo Jovem</option>
-            <option value="workshop_fotografia_video">Workshop de Fotografia e Vídeo</option>
-            <option value="festival_gastronomia">Festival de Gastronomia (Food Trucks, Novas Tendências)</option>
-            <option value="maratona_e_sports">Maratona de Jogos de Vídeo (E-Sports)</option>
-            <option value="rally_aventura_ar_livre">Rally ou Desafio de Aventura ao Ar Livre</option>
-            <option value="exposicao_arte_contemporanea">Exposição de Arte Contemporânea</option>
-            <option value="palestra_carreira_empreendedorismo">Palestra sobre Carreira e Empreendedorismo Jovem</option>
-            <option value="encontro_tecnologia_startups">Encontro de Tecnologia e Startups (Hackathons)</option>
-            <option value="festival_cultura_urbana">Festival de Cultura Urbana (Hip Hop, Breakdance, Graffiti)</option>
-            <option value="festival_musica_indie">Festival de Música Indie</option>
-            <option value="karaoke_ao_vivo">Karaokê ao Vivo ou Competição de Talentos</option>
-          </select>
-        </div>
+  <main class="main-content">
+    <h1>Criar Evento</h1>
+    <form class="event-form">
+      <div class="image-upload">
+        <span>Escolher capa</span>
+        <input type="file" accept="image/*" class="file-input" />
       </div>
 
-      <div class="relative w-full z-50">
-        <input type="text" placeholder="Cidade" class="border rounded-md w-full px-4 py-2 shadow-md" value="" />
-      </div>
-      <input placeholder="Endereço" type="text" class="border rounded-md shadow-md w-full px-4 py-2" required value="" />
-      <input type="text" placeholder="Link (opcional)" class="border rounded-md shadow-md w-full px-4 py-2" value="" />
-      <div class="flex items-center gap-2">
-        <input type="date" id="event-date" class="rounded-md border shadow-md px-3 py-1" required name="event-date" value="" />
-        <input type="time" id="event-time" class="rounded-md border shadow-md px-3 py-1" required name="event-time" value="" />
+      <div class="form-fields-select">
+        <input placeholder="Nome do evento" type="text" class="input-text" required />
+        <select class="select-box" required>
+          <option value="" disabled selected>Tipo de evento</option>
+          <option value="show">Show de Bandas Locais</option>
+          <option value="festival_musica_viva">Festival de Música ao Vivo</option>
+          <option value="show_djs">Show de DJs</option>
+          <option value="festival_musica_eletronica">Festival de Música Eletrônica</option>
+          <option value="show_standup">Show de Stand-Up Comedy</option>
+          <option value="concerto_rock">Concerto de Rock</option>
+          <option value="festival_cultura_pop">Festival de Cultura Pop</option>
+          <option value="evento_gospel">Evento Gospel</option>
+          <option value="encontro_influenciadores">Encontro de Influenciadores e Criadores de Conteúdo</option>
+          <option value="festival_cinema_independente">Festival de Cinema Independente</option>
+          <option value="feira_moda_estilo">Feira de Moda e Estilo Jovem</option>
+          <option value="workshop_fotografia_video">Workshop de Fotografia e Vídeo</option>
+          <option value="festival_gastronomia">Festival de Gastronomia (Food Trucks, Novas Tendências)</option>
+          <option value="maratona_e_sports">Maratona de Jogos de Vídeo (E-Sports)</option>
+          <option value="rally_aventura_ar_livre">Rally ou Desafio de Aventura ao Ar Livre</option>
+          <option value="exposicao_arte_contemporanea">Exposição de Arte Contemporânea</option>
+          <option value="palestra_carreira_empreendedorismo">Palestra sobre Carreira e Empreendedorismo Jovem</option>
+          <option value="encontro_tecnologia_startups">Encontro de Tecnologia e Startups (Hackathons)</option>
+          <option value="festival_cultura_urbana">Festival de Cultura Urbana (Hip Hop, Breakdance, Graffiti)</option>
+          <option value="festival_musica_indie">Festival de Música Indie</option>
+          <option value="karaoke_ao_vivo">Karaokê ao Vivo ou Competição de Talentos</option>
+        </select>
       </div>
 
-      <div class="flex items-center gap-4">
-        <div class="flex items-center gap-2">
-          <input type="radio" id="personal-profile" class="hidden peer" name="event-cost" checked value="gratuito" />
-          <label for="personal-profile" class="flex items-center gap-2 cursor-pointer px-4 py-2 rounded-full border-2 border-gray-300 peer-checked:border-blue-400 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out">
-            <span>Evento gratuito</span>
-          </label>
+      <div class="form-fields">
+        <input placeholder="Cidade" type="text" class="input-text" />
+        <input placeholder="Endereço" type="text" class="input-text" required />
+        <input type="text" placeholder="Link (opcional)" class="input-text" />
+      </div>
+
+      <div class="date-time">
+        <input type="date" class="input-date-time" required />
+        <input type="time" class="input-date-time" required />
+      </div>
+
+      <div class="cost-options">
+        <div class="radio-option">
+          <input type="radio" id="gratuito" name="event-cost" checked value="gratuito" />
+          <label for="gratuito">Evento gratuito</label>
         </div>
-        <div class="flex items-center gap-2">
-          <input type="radio" id="institution-profile" class="hidden peer" name="event-cost" value="pago" />
-          <label for="institution-profile" class="flex items-center gap-2 cursor-pointer px-4 py-2 rounded-full border-2 border-gray-300 peer-checked:border-blue-400 peer-checked:bg-blue-50 transition-all duration-200 ease-in-out">
-            <span>Evento pago</span>
-          </label>
+        <div class="radio-option">
+          <input type="radio" id="pago" name="event-cost" value="pago" />
+          <label for="pago">Evento pago</label>
         </div>
       </div>
 
-      <textarea placeholder="Descrição do evento" class="mb-10 border w-full h-[300px] p-4 rounded-md shadow-md" required></textarea>
-      <button type="submit" class="bg-blue-400 font-bold text-white text-xl w-72 h-14 rounded-md disabled:opacity-50">Publicar</button>
+      <textarea placeholder="Descrição do evento" class="textarea" required></textarea>
+      <button type="submit" class="submit-btn">Publicar</button>
     </form>
   </main>
 
-  <footer class="flex flex-col text-center text-gray-500 border-t">
-    <div class="flex bottom-0 left-0 lg:w-full w-[95%] mx-auto py-4 md:py-3 flex-col gap-4 md:gap-0 md:flex-row justify-between items-center">
-      <span class="text-xs pb-1">&quot;-----------------------------------------------------------------------------.&quot;</span>
+  <footer class="footer">
+    <div class="footer-content">
+
     </div>
   </footer>
 </div>

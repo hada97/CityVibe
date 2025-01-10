@@ -1,6 +1,5 @@
 package com.start.CityVibe.infra.config;
 
-
 import com.start.CityVibe.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,26 +21,30 @@ public class SecurityConfig  {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/", "/login", "/users/register", "/swagger-ui/index.html").permitAll();
+                    registry.requestMatchers(
+                            "/",
+                            "/login",
+                            "/users/register",
+                            "/swagger-ui/**",
+                            "/v3/api-docs/**")
+                            .permitAll();
                     registry.anyRequest().authenticated();
                 })
                 .oauth2Login(oauth2login -> {
                     oauth2login
-                            .loginPage("/login")  // Página de login personalizada
+                            .loginPage("/login")
                             .successHandler((request, response, authentication) -> {
                                 OAuth2AuthenticationToken oauth2Token = (OAuth2AuthenticationToken) authentication;
                                 OAuth2User oAuth2User = oauth2Token.getPrincipal();
                                 String email = oAuth2User.getAttribute("email");
                                 String name = oAuth2User.getAttribute("name");
 
-                                // Verificar se o usuário já existe
                                 if (!userService.existsByEmail(email)) {
                                     // Registrar o usuário automaticamente caso não exista
                                     userService.registerNewUser(email, name);
                                 }
-
-                                // Após o registro (ou não), redireciona para a página desejada
-                                response.sendRedirect("/index");  // Redireciona para a página inicial após login
+                                // Após o registro (ou não), redireciona para a página:
+                                response.sendRedirect("/index");
                             });
                 })
                 .build();
