@@ -1,6 +1,7 @@
 package com.start.CityVibe.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.start.CityVibe.domain.Evento;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -40,6 +41,9 @@ public class User {
 
     private Double longitude;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private Set<Evento> eventos = new HashSet<>();
 
     // Métodos de hashCode e equals baseados no 'id' único
     @Override
