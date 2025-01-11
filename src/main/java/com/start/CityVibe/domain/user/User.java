@@ -37,9 +37,6 @@ public class User {
 
     private String address;
 
-    private Double latitude;
-
-    private Double longitude;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore

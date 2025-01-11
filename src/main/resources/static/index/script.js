@@ -31,6 +31,12 @@ document
   .addEventListener("submit", async function (event) {
     event.preventDefault();
 
+    // Verifica se o userId foi carregado corretamente
+    if (!userId) {
+      alert("Erro: o userId não foi carregado.");
+      return;
+    }
+
     // Coleta os dados do formulário
     const name = document.querySelector('input[placeholder="Nome do evento"]').value;
     const eventType = document.querySelector('select').value;
@@ -43,18 +49,22 @@ document
     const description = document.querySelector('textarea[placeholder="Descrição do evento"]').value;
     const eventCover = document.querySelector('#event-cover').value;
 
+    // Combina data e hora no formato 'yyyy-MM-dd'T'HH:mm:ss'
+    const fullDateTime = `${date}T${time}:00`;  // Adiciona :00 para completar os segundos
+
     // Criar o objeto de dados a serem enviados para a API
     const eventData = {
-      name,
-      eventType,
-      city,
-      address,
-      link,
-      date,
-      time,
-      cost,
-      description,
-      eventCover // Adiciona a URL da capa do evento
+      nome: name,
+      tipoEvento: eventType,
+      cidade: city,
+      endereco: address,
+      link: link,
+      data: date,
+      hora: fullDateTime,
+      custo: cost,
+      descricao: description,
+      capa: eventCover, // Adiciona a URL da capa do evento
+      userId: userId // Inclui o userId carregado
     };
 
     // Tentando enviar para a API

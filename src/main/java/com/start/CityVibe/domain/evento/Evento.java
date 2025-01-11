@@ -37,10 +37,6 @@ public class Evento {
     @Column(name = "descricao", nullable = true, length = 1000)
     private String descricao;
 
-    // Categoria do evento (Show, Stand-Up, Gospel, etc.)
-    @Column(name = "categoria", nullable = false)
-    private String categoria;
-
     // Usando o enum TipoEvento
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_evento", nullable = false)
@@ -63,7 +59,6 @@ public class Evento {
                 this.data,
                 this.hora,
                 this.descricao,
-                this.categoria,
                 this.tipoEvento,
                 this.user != null ? this.user.getId() : null,  // Pega apenas o ID do usuário
                 this.capa

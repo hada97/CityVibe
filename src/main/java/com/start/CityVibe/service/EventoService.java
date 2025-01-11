@@ -1,13 +1,13 @@
 package com.start.CityVibe.service;
 
-import com.start.CityVibe.domain.evento.Evento;
-import com.start.CityVibe.domain.evento.EventoDTO;
+import com.start.CityVibe.domain.evento.*;
 import com.start.CityVibe.domain.user.User;
 import com.start.CityVibe.repository.EventoRepository;
 import com.start.CityVibe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
 @Service
@@ -23,21 +23,23 @@ public class EventoService {
     private UserService userService;
 
 
-    public Evento salvarEvento(EventoDTO eventoDTO) {
+    @Transactional
+    public EventoDetail salvarEvento(EventoDTO data) {
         Long userId = userService.getUserIdByEmailFromGoogle();
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("User not found"));
 
         Evento evento = new Evento();
-        evento.setNome(eventoDTO.getNome());
-        evento.setData(eventoDTO.getData());
-        evento.setHora(eventoDTO.getHora());
-        evento.setDescricao(eventoDTO.getDescricao());
-        evento.setCategoria(eventoDTO.getCategoria());
-        evento.setTipoEvento(eventoDTO.getTipoEvento());
-        evento.setCapa(eventoDTO.getCapa());
+        evento.setNome(data.getNome());
+        evento.setData(data.getData());
+        evento.setHora(data.getHora());
+        evento.setDescricao(data.getDescricao());
+        evento.setTipoEvento(data.getTipoEvento());
+        evento.setCapa(data.getCapa());
         evento.setUser(user);
-        return eventoRepository.save(evento);
+
+        eventoRepository.save(evento);
+        return new EventoDetail(evento);
     }
 
     // Listar todos os eventos
@@ -50,7 +52,7 @@ public class EventoService {
         return eventoRepository.findById(id);
     }
 
-    // Deletar um evento
+    @Transactional
     public boolean deletarEvento(Long id) {
         if (eventoRepository.existsById(id)) {
             eventoRepository.deleteById(id);

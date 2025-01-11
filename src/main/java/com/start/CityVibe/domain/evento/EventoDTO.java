@@ -14,7 +14,6 @@ public class EventoDTO {
     private Date data;          // Data do evento
     private Date hora;          // Hora do evento
     private String descricao;   // Descrição do evento
-    private String categoria;   // Categoria do evento
     private TipoEvento tipoEvento; // Tipo do evento (enum)
     private Long userId;        // ID do usuário, ao invés do objeto User
     private String capa;        // URL da capa do evento
