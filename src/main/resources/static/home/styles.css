@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start; /* Ajuste para o conteúdo ficar no topo */
-    height: 100vh;
+    height: 300vh;
 }
 
 header {
@@ -67,7 +67,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centraliza o conteúdo do main */
-    justify-content: center; /* Centraliza verticalmente */
     flex-grow: 1;
 }
 
@@ -82,10 +81,10 @@ h1 {
 footer {
     background: linear-gradient(to right, #2a3b4c, #c9c9c9);
     color: white;
-    width: 100%; /* Garantir que o rodapé preencha toda a largura */
+    width: 100%;
     padding: 14px 0;
     text-align: center;
-    margin-top: auto; /* Garante que o footer fique sempre na parte inferior */
+    margin-top: auto;
 }
 
 footer p {
@@ -94,16 +93,16 @@ footer p {
 
 /* Botão de enviar */
 button.submit-btn {
-    padding: 0; /* Remover o padding, pois já estamos ajustando a altura */
-    height: 40px; /* Definir a altura do botão para 40px */
-    background-color: #3b6ba3; /* Azul para o botão */
+    padding: 0;
+    height: 40px;
+    background-color: #3b6ba3
     color: white;
     font-size: 1.1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    width: 100%;
 }
 
 button.submit-btn:hover {
@@ -111,62 +110,6 @@ button.submit-btn:hover {
 }
 
 
-
-
-
-
-Para implementar o que você descreveu, ou seja, uma barra de pesquisa e cards de eventos em um layout de colunas, você pode seguir os passos abaixo:
-
-Estrutura HTML: Adicionar uma barra de pesquisa e o contêiner de cards dentro do <main>.
-Estilo CSS: Usar Flexbox ou Grid para garantir que os cards se organizem de forma responsiva em colunas.
-Interação com a API: Usar JavaScript para buscar os eventos de uma API e exibi-los no formato de cards.
-Vou fornecer um exemplo de como você pode implementar isso.
-
-1. Estrutura HTML
-Aqui está a estrutura HTML com a barra de pesquisa e os cards de eventos dentro do main.
-
-html
-Copiar código
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City Vibe</title>
-    <link rel="stylesheet" href="/index/styles.css">
-    <script defer src="/home/script.js"></script>
-</head>
-<body>
-<header>
-    <h1>City Vibe</h1>
-    <nav>
-        <a href="login" class="btn">Publicar Evento</a>
-    </nav>
-</header>
-
-<main class="main-content">
-    <!-- Barra de pesquisa -->
-    <div class="search-container">
-        <input type="text" id="search" placeholder="Buscar eventos..." oninput="filtrarEventos()">
-    </div>
-
-    <!-- Contêiner de Cards -->
-    <div id="event-cards-container" class="event-cards-container">
-        <!-- Os cards de eventos serão carregados aqui -->
-    </div>
-</main>
-
-<footer>
-    <p>&copy; 2025 City Vibe. Todos os direitos reservados.</p>
-</footer>
-
-</body>
-</html>
-2. Estilos CSS (Para a barra de pesquisa e layout de cards)
-Aqui, você pode usar Flexbox para organizar os cards em colunas e garantir que o layout seja responsivo.
-
-css
-Copiar código
 /* Estilos Gerais */
 body {
     font-family: Arial, sans-serif;
@@ -209,38 +152,44 @@ footer {
 
 #search {
     padding: 10px;
-    width: 80%;
+    width: 300px;
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
 
 
-
 .event-cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Exibe um card por linha, mas vai se ajustar */
     gap: 20px;  /* Espaçamento entre os cards */
-    max-height: 90vh;  /* Altura do contêiner ajustada para ocupar a altura da tela */
-    padding: 20px;
+    max-height: 100%;  /* Altura do contêiner ajustada para ocupar a altura da tela */
     justify-items: center;
-    overflow-y: auto;  /* Permite rolar para ver mais cards */
+    overflow-y: auto;
+    border-radius: 8px;/* Permite rolar para ver mais cards */
 }
+
 
 /* Estilo para cada card de evento */
 .card {
     background-color: #fff;
-    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;  /* Largura fixa de 300px */
-    height: 180px;  /* Altura fixa de 220px */
+    width: 600px;  /* Largura fixa de 600px */
+    height: 250px;  /* Altura fixa de 250px */
     transition: transform 0.3s ease;
     display: flex;
-    flex-direction: column;  /* Organiza conteúdo verticalmente */
+    flex-direction: column;
 }
 
 .card:hover {
     transform: translateY(-10px);  /* Adiciona um efeito de hover */
+}
+
+.div-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza o conteúdo do main */
+    height: 100%;  /* Garante que ocupe toda a altura do contêiner */
 }
 
 .card-image {
@@ -249,21 +198,30 @@ footer {
 }
 
 .card-content {
-    padding: 14px;
+    padding: 10px; /* Adiciona espaçamento entre a borda do card e o conteúdo */
+    flex: 1;  /* Faz com que o conteúdo ocupe o espaço restante */
 }
 
 .card-title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
-.card-description {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 10px;
+.card-description, .card-date {
+    font-size: 16px;
 }
 
 .card-title, .card-description, .card-content {
     color: #000000;  /* Cor do texto mais escura */
+}
+
+.card-city {
+        font-size: 14px;
+        color: #777;
+        display: flex;              /* Ativa o modo flexbox na span */
+        align-items: center;        /* Alinha o texto no centro verticalmente */
+        justify-content: center;    /* Centraliza o texto horizontalmente */
+        height: 100%;               /* Faz a span ocupar toda a altura do container pai (div-content) */
+        padding-right: 10px;         /* Adiciona um leve espaçamento à esquerda */
+        margin-top: auto;
 }
