@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start; /* Ajuste para o conteúdo ficar no topo */
-    height: 100vh;
+    height: 300vh;
 }
 
 header {
@@ -67,7 +67,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centraliza o conteúdo do main */
-    justify-content: center; /* Centraliza verticalmente */
     flex-grow: 1;
 }
 
@@ -82,10 +81,10 @@ h1 {
 footer {
     background: linear-gradient(to right, #2a3b4c, #c9c9c9);
     color: white;
-    width: 100%; /* Garantir que o rodapé preencha toda a largura */
+    width: 100%;
     padding: 14px 0;
     text-align: center;
-    margin-top: auto; /* Garante que o footer fique sempre na parte inferior */
+    margin-top: auto;
 }
 
 footer p {
@@ -94,18 +93,138 @@ footer p {
 
 /* Botão de enviar */
 button.submit-btn {
-    padding: 0; /* Remover o padding, pois já estamos ajustando a altura */
-    height: 40px; /* Definir a altura do botão para 40px */
-    background-color: #3b6ba3; /* Azul para o botão */
+    padding: 0;
+    height: 40px;
+    background-color: #3b6ba3
     color: white;
     font-size: 1.1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    width: 100%;
 }
 
 button.submit-btn:hover {
     background-color: #315b87; /* Azul mais escuro no hover */
+}
+
+
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #0056b3;
+}
+
+nav a:hover {
+    background-color: #004085;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+/* Barra de pesquisa */
+.search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#search {
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.event-cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(636px, 1fr)); /* Garantir que o card tenha 636px de largura */
+        gap: 20px;  /* Espaçamento entre os cards */
+        max-height: 100%;  /* Altura do contêiner ajustada para ocupar a altura da tela */
+        justify-items: center;
+        overflow-y: auto;
+}
+
+
+/* Estilo para cada card de evento */
+.card {
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 636px;  /* Largura fixa de 636px */
+    height: 250px;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    cursor:pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);  /* Adiciona um efeito de hover */
+}
+
+.div-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza o conteúdo do main */
+    height: 100%;  /* Garante que ocupe toda a altura do contêiner */
+}
+
+.card-image {
+    width: 636px;  /* Largura fixa para a imagem */
+    height: 159px;  /* Altura fixa para a imagem */
+    object-fit: cover;  /* Faz a imagem cobrir toda a área disponível sem distorcer */
+    border-top: 8px;
+}
+
+
+.card-content {
+    padding: 10px; /* Adiciona espaçamento entre a borda do card e o conteúdo */
+    flex: 1;  /* Faz com que o conteúdo ocupe o espaço restante */
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-description, .card-date {
+    font-size: 16px;
+}
+
+.card-title, .card-description, .card-content {
+    color: #777777;  /* Cor do texto mais escura */
+}
+
+.card-city {
+        font-size: 14px;
+        color: #777;
+        display: flex;              /* Ativa o modo flexbox na span */
+        align-items: center;        /* Alinha o texto no centro verticalmente */
+        justify-content: center;    /* Centraliza o texto horizontalmente */
+        height: 100%;               /* Faz a span ocupar toda a altura do container pai (div-content) */
+        padding: 10px;         /* Adiciona um leve espaçamento à esquerda */
+        margin-top: auto;
 }

@@ -29,7 +29,6 @@ public class UserController {
     @Autowired
     private EventoService eventoService;
 
-
     @GetMapping
     public Page<User> getUsers(
             @RequestParam(defaultValue = "0") int page,
@@ -38,7 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/eventos")
-    public Page<Evento> getUsersDogs(
+    public Page<Evento> getUserEvents(
             @PathVariable Long id, // Pega o ID do usuário
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size) {

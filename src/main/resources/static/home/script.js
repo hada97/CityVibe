@@ -86,25 +86,51 @@ function logout() {
 
 // Inicializa o processo quando a página for carregada
 document.addEventListener("DOMContentLoaded", () => {
-  verificarLogin(); // Verifica se o usuário está logado
   carregarEventos(); // Carrega os eventos
 });
 
-// Função para verificar se o usuário está logado
-function verificarLogin() {
-  const token = localStorage.getItem("authToken"); // Verifica se o token de autenticação existe
-  const btnPublicarEvento = document.querySelector(".btn");
 
-  // Se o token existir, redireciona para a página de publicação do evento
-  if (token) {
-    btnPublicarEvento.href = "/publicar-evento"; // Altere para a URL correta da página de publicar evento
-    btnPublicarEvento.innerText = "Publicar Evento"; // Pode alterar o texto do botão
-  } else {
-    // Se o token não existir, direciona para a página de login
-    btnPublicarEvento.href = "/login";
-    btnPublicarEvento.innerText = "Faça Login para Publicar";
-  }
+// script.js
+document.addEventListener("DOMContentLoaded", () => {
+    const loginButton = document.querySelector(".btn");
+
+    // Obtém o token de autenticação armazenado no localStorage
+    const token = localStorage.getItem("authToken");
+
+    console.log("Token obtido:", token); // Log para depuração
+
+    // Se o token existir, o usuário está logado
+    if (token) {
+        console.log("Usuário logado. Redirecionando para index...");
+        loginButton.href = "/index"; // Redireciona para a página index
+    } else {
+        console.log("Usuário não logado. Redirecionando para login...");
+        loginButton.href = "/login"; // Redireciona para a página de login
+    }
+});
+
+
+function fazerLogin() {
+    const token = "seu_token_de_autenticacao"; // Este token seria fornecido pelo servidor após login bem-sucedido
+    localStorage.setItem("authToken", token); // Armazena o token no localStorage
+
+    // Redireciona para a página index
+    window.location.href = "/index"; // Aqui seria a sua página de eventos
 }
 
-// Chama a função ao carregar a página
-window.onload = verificarLogin;
+
+// Busca o userId na inicialização
+const fetchUserId = async () => {
+  try {
+    const response = await fetch(`${baseUrl}/users/login/id`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (!response.ok) throw new Error("Falha ao obter o userId");
+
+    userId = await response.json();
+    console.log("User ID:", userId);
+  } catch (error) {
+    console.error("Erro ao buscar userId:", error);
+  }
+};

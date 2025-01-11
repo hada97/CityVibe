@@ -5,7 +5,7 @@ import com.start.CityVibe.domain.user.User;
 import com.start.CityVibe.repository.EventoRepository;
 import com.start.CityVibe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
@@ -66,7 +66,8 @@ public class EventoService {
         return false;
     }
 
-    public Page<Evento> getEventosByUserId(Long id, int page, int size) {
-        return null;
+    public Page<Evento> getEventosByUserId(Long userId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return eventoRepository.findByUserId(userId, pageable);
     }
 }
