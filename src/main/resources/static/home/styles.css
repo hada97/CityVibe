@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #333; /* Cor cinza escuro para o fundo */
+    background: linear-gradient(to right, #777777, #c9c9c9);
     color: #f1f1f1; /* Texto claro para contraste */
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@ body {
 }
 
 header {
-    background-color: #2a3b4c; /* Cor azul escuro para cabeçalho */
+    background: linear-gradient(to right, #2a3b4c, #c9c9c9);
     color: white;
     width: 100%; /* Garantir que o cabeçalho preencha toda a largura */
     height: 50px; /* Altura do cabeçalho ajustada para 50px */
@@ -80,7 +80,7 @@ h1 {
 
 /* Footer */
 footer {
-    background-color: #2a3b4c; /* Cor azul escuro para cabeçalho e rodapé */
+    background: linear-gradient(to right, #2a3b4c, #c9c9c9);
     color: white;
     width: 100%; /* Garantir que o rodapé preencha toda a largura */
     padding: 14px 0;
