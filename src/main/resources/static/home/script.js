@@ -72,23 +72,6 @@ function logout() {
 }
 
 
-// script.js
-document.addEventListener("DOMContentLoaded", () => {
-    const loginButton = document.querySelector(".btn");
-
-    console.log("Token obtido:", token); // Log para depuração
-
-    // Se o token existir, o usuário está logado
-    if (token) {
-        console.log("Usuário logado. Redirecionando para index...");
-        loginButton.href = "/index"; // Redireciona para a página index
-    } else {
-        console.log("Usuário não logado. Redirecionando para login...");
-        loginButton.href = "/login"; // Redireciona para a página de login
-    }
-});
-
-
 // Busca o userId na inicialização
 const fetchUserId = async () => {
   try {
@@ -105,7 +88,9 @@ const fetchUserId = async () => {
   }
 };
 
+
 // Inicializa o processo quando a página for carregada
 document.addEventListener("DOMContentLoaded", () => {
   carregarEventos(); // Carrega os eventos
+  fetchUserId();
 });
