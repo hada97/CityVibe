@@ -37,10 +37,15 @@ public class EventoService {
         evento.setTipoEvento(data.getTipoEvento());
         evento.setCapa(data.getCapa());
         evento.setUser(user);
+        evento.setCidade(data.getCidade());
+        evento.setEndereco(data.getEndereco());
+        evento.setLink(data.getLink());
+        evento.setCusto(data.getCusto());
 
         eventoRepository.save(evento);
         return new EventoDetail(evento);
     }
+
 
     // Listar todos os eventos
     public List<Evento> listarEventos() {

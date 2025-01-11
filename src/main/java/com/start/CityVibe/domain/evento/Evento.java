@@ -46,12 +46,22 @@ public class Evento {
     @JoinColumn(name = "user_id")
     private User user;
 
-    // Caminho para a capa (imagem)
     @Column(name = "capa", nullable = true)
     private String capa;
 
+    @Column(name = "cidade", nullable = false)
+    private String cidade;
 
-    // Método para converter Evento para EventoDTO
+    @Column(name = "endereco", nullable = false)
+    private String endereco;
+
+    @Column(name = "link", nullable = true)
+    private String link;
+
+    @Column(name = "custo", nullable = false)
+    private String custo;  // "gratuito" ou "pago"
+
+
     public EventoDTO toDTO() {
         return new EventoDTO(
                 this.id,
@@ -60,8 +70,12 @@ public class Evento {
                 this.hora,
                 this.descricao,
                 this.tipoEvento,
-                this.user != null ? this.user.getId() : null,  // Pega apenas o ID do usuário
-                this.capa
+                this.user != null ? this.user.getId() : null,
+                this.capa,
+                this.cidade,
+                this.endereco,
+                this.link,
+                this.custo
         );
     }
 

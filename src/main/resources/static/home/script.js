@@ -60,7 +60,7 @@ async function carregarEventos() {
                     </p>
                 </div>
                 <span class="card-city">${
-                  evento.city
+                  evento.cidade
                 }</span> <!-- Adicionando o nome da cidade -->
             </div>
         `;
