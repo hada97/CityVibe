@@ -1,11 +1,9 @@
 package com.start.CityVibe.domain.evento;
 
-import com.start.CityVibe.domain.TipoEvento;
 import com.start.CityVibe.domain.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
-
 
 @Entity
 @Table(name = "eventos") // Nome da tabela no banco de dados
@@ -56,16 +54,22 @@ public class Evento {
     @Column(name = "capa", nullable = true)
     private String capa;
 
-    @Override
-    public String toString() {
-        return "Evento{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", data=" + data +
-                ", hora=" + hora +
-                ", descricao='" + descricao + '\'' +
-                ", tipoEvento=" + tipoEvento +
-                ", capa='" + capa + '\'' +
-                '}';
+
+    // Método para converter Evento para EventoDTO
+    public EventoDTO toDTO() {
+        return new EventoDTO(
+                this.id,
+                this.nome,
+                this.data,
+                this.hora,
+                this.descricao,
+                this.categoria,
+                this.tipoEvento,
+                this.user != null ? this.user.getId() : null,  // Pega apenas o ID do usuário
+                this.capa
+        );
     }
+
+
+
 }

@@ -17,8 +17,7 @@ public class ViewController {
         return "profile/profile";
     }
 
-
-    @GetMapping("/home")
+    @GetMapping("/")
     public String home() {
         return "home/home";
     }

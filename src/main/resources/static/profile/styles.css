@@ -1,0 +1,111 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #777777, #c9c9c9);
+    color: #f1f1f1; /* Texto claro para contraste */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Ajuste para o conteúdo ficar no topo */
+    height: 100vh;
+}
+
+header {
+    background: linear-gradient(to right, #2a3b4c, #c9c9c9);
+    color: white;
+    width: 100%; /* Garantir que o cabeçalho preencha toda a largura */
+    height: 50px; /* Altura do cabeçalho ajustada para 50px */
+    box-sizing: border-box; /* Garantir que o padding não afete a altura */
+    display: flex; /* Usar flexbox para alinhar verticalmente */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    justify-content: space-around; /* Alinha os itens com espaço entre eles */
+}
+
+header h1 {
+    font-size: 1.4rem;
+    margin: 0; /* Remove a margem padrão */
+    display: flex; /* Faz o h1 ser um item flexível */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Garante que o conteúdo esteja centrado horizontalmente */
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0 20px; /* Remove padding superior/inferior */
+    height: 40px; /* Define altura dos botões */
+    line-height: 40px; /* Centraliza o texto verticalmente */
+    background-color: #1e2a35; /* Azul mais claro para botões */
+    border-radius: 5px;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+    display: flex; /* Torna o botão um container flexível */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    justify-content: center; /* Garante que o conteúdo seja centralizado horizontalmente */
+}
+
+header nav a:hover {
+    background-color: #18222d; /* Azul mais escuro no hover */
+}
+
+/* Main */
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo do main */
+    justify-content: center; /* Centraliza verticalmente */
+    flex-grow: 1;
+}
+
+/* Título dentro do Main */
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, #2a3b4c, #c9c9c9);
+    color: white;
+    width: 100%; /* Garantir que o rodapé preencha toda a largura */
+    padding: 14px 0;
+    text-align: center;
+    margin-top: auto; /* Garante que o footer fique sempre na parte inferior */
+}
+
+footer p {
+    color: #ccc;
+}
+
+/* Botão de enviar */
+button.submit-btn {
+    padding: 0; /* Remover o padding, pois já estamos ajustando a altura */
+    height: 40px; /* Definir a altura do botão para 40px */
+    background-color: #3b6ba3; /* Azul para o botão */
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+}
+
+button.submit-btn:hover {
+    background-color: #315b87; /* Azul mais escuro no hover */
+}

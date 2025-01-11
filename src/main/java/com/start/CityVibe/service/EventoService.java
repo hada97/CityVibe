@@ -1,12 +1,14 @@
 package com.start.CityVibe.service;
 
 import com.start.CityVibe.domain.evento.Evento;
+import com.start.CityVibe.domain.evento.EventoDTO;
+import com.start.CityVibe.domain.user.User;
 import com.start.CityVibe.repository.EventoRepository;
+import com.start.CityVibe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class EventoService {
@@ -14,8 +16,27 @@ public class EventoService {
     @Autowired
     private EventoRepository eventoRepository;
 
-    // Salvar um evento
-    public Evento salvarEvento(Evento evento) {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
+
+
+    public Evento salvarEvento(EventoDTO eventoDTO) {
+        Long userId = userService.getUserIdByEmailFromGoogle();
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("User not found"));
+
+        Evento evento = new Evento();
+        evento.setNome(eventoDTO.getNome());
+        evento.setData(eventoDTO.getData());
+        evento.setHora(eventoDTO.getHora());
+        evento.setDescricao(eventoDTO.getDescricao());
+        evento.setCategoria(eventoDTO.getCategoria());
+        evento.setTipoEvento(eventoDTO.getTipoEvento());
+        evento.setCapa(eventoDTO.getCapa());
+        evento.setUser(user);
         return eventoRepository.save(evento);
     }
 

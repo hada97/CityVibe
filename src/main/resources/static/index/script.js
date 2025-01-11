@@ -39,8 +39,23 @@ document
     const link = document.querySelector('input[placeholder="Link (opcional)"]').value;
     const date = document.querySelector('input[type="date"]').value;
     const time = document.querySelector('input[type="time"]').value;
-    const cost = document.querySelector('input[name="event-cost"]:checked').value;
+    const cost = document.querySelector('input[name="evento"]:checked').value;
     const description = document.querySelector('textarea[placeholder="Descrição do evento"]').value;
+    const eventCover = document.querySelector('#event-cover').value;
+
+    // Criar o objeto de dados a serem enviados para a API
+    const eventData = {
+      name,
+      eventType,
+      city,
+      address,
+      link,
+      date,
+      time,
+      cost,
+      description,
+      eventCover // Adiciona a URL da capa do evento
+    };
 
     // Tentando enviar para a API
     try {
@@ -50,25 +65,19 @@ document
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          name,
-          eventType,
-          city,
-          address,
-          link,
-          date,
-          time,
-          cost,
-          description
-        }),
+        body: JSON.stringify(eventData),
       });
 
       if (response.ok) {
         alert("Evento criado com sucesso!");
-        document.querySelector(".event-form").reset();
+        document.querySelector(".event-form").reset(); // Limpa o formulário após sucesso
       } else {
         const data = await response.json();
-        alert("Erro: " + data.message);
+        if (data.message) {
+          alert("Erro: " + data.message);
+        } else {
+          alert("Erro desconhecido.");
+        }
       }
     } catch (error) {
       alert("Erro ao tentar criar o evento: " + error.message);
@@ -83,14 +92,22 @@ fetch("http://localhost:8080/api/user/profile", {
 })
   .then((response) => response.json())
   .then((data) => {
-    document.getElementById("user-name").innerText = data.name;
+    const userNameElement = document.getElementById("user-name");
+    if (userNameElement) {
+      userNameElement.innerText = data.name;
+    } else {
+      console.error("Elemento com id 'user-name' não encontrado.");
+    }
   })
   .catch((error) => {
     console.error("Erro ao carregar o nome do usuário:", error);
-    document.getElementById("user-name").innerText = "Erro ao carregar o nome";
+    const userNameElement = document.getElementById("user-name");
+    if (userNameElement) {
+      userNameElement.innerText = "Erro ao carregar o nome";
+    }
   });
 
 // Inicialização ao carregar o DOM
 document.addEventListener("DOMContentLoaded", async () => {
-  const [userIdResult] = await Promise.all([fetchUserId()]);
+  await fetchUserId();
 });

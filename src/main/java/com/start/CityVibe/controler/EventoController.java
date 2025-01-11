@@ -1,6 +1,7 @@
 package com.start.CityVibe.controler;
 
 import com.start.CityVibe.domain.evento.Evento;
+import com.start.CityVibe.domain.evento.EventoDTO;
 import com.start.CityVibe.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,12 +17,17 @@ public class EventoController {
     @Autowired
     private EventoService eventoService;
 
-    // Criar um novo evento
     @PostMapping
-    public ResponseEntity<Evento> criarEvento(@RequestBody Evento evento) {
-        Evento novoEvento = eventoService.salvarEvento(evento);
-        return new ResponseEntity<>(novoEvento, HttpStatus.CREATED);
+    public ResponseEntity<EventoDTO> criarEvento(@RequestBody EventoDTO eventoDTO) {
+        // Converte o DTO para a entidade Evento
+        Evento novoEvento = eventoService.salvarEvento(eventoDTO);
+
+        // Converte a entidade Evento para o DTO para retornar
+        EventoDTO novoEventoDTO = novoEvento.toDTO();
+
+        return new ResponseEntity<>(novoEventoDTO, HttpStatus.CREATED);
     }
+
 
     // Obter todos os eventos
     @GetMapping
@@ -45,7 +51,7 @@ public class EventoController {
 
         if (eventoExistente.isPresent()) {
             evento.setId(id);  // Mantém o ID do evento para a atualização
-            Evento eventoAtualizado = eventoService.salvarEvento(evento);
+            Evento eventoAtualizado = eventoService.salvarEvento(evento.toDTO());
             return new ResponseEntity<>(eventoAtualizado, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

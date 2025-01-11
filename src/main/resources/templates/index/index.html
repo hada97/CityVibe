@@ -5,52 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>City Vibe</title>
     <link rel="stylesheet" href="/index/styles.css">
+    <script defer src="/index/script.js"></script>
 </head>
+
 <body>
 <header>
-
-        <h1>City Vibe</h1>
-        <nav>
-            <a href="login" class="btn">Entrar</a>
-            <a href="home" class="btn">Início</a>
-        </nav>
-
+    <h1>City Vibe</h1>
+    <nav>
+        <a href="/profile" class="btn">Perfil</a>
+        <a href="/" class="btn">Início</a>
+    </nav>
+    <div id="user-name" style="display: none;"></div>
 </header>
 
 <main class="main-content">
 
     <form class="event-form">
 
+        <!-- O seguinte código foi desativado para revisão -->
+        <!--
         <div class="image-upload">
             <input type="file" id="file" class="file-input">
             <label for="file" class="file-label">Escolher capa</label>
-        </div>
+        </div>-->
 
         <div class="form-fields-select">
+            <input id="event-cover" placeholder="Capa do evento" type="url" class="input-text" required pattern="https?://.*" />
             <input placeholder="Nome do evento" type="text" class="input-text" required />
             <select class="select-box" required>
                 <option value="" disabled selected>Tipo de evento</option>
-                <option value="show">Show de Bandas Locais</option>
-                <option value="festival_musica_viva">Festival de Música ao Vivo</option>
-                <option value="show_djs">Show de DJs</option>
-                <option value="festival_musica_eletronica">Festival de Música Eletrônica</option>
-                <option value="show_standup">Show de Stand-Up Comedy</option>
-                <option value="concerto_rock">Concerto de Rock</option>
-                <option value="festival_cultura_pop">Festival de Cultura Pop</option>
-                <option value="evento_gospel">Evento Gospel</option>
-                <option value="encontro_influenciadores">Encontro de Influenciadores e Criadores de Conteúdo</option>
-                <option value="festival_cinema_independente">Festival de Cinema Independente</option>
-                <option value="feira_moda_estilo">Feira de Moda e Estilo Jovem</option>
-                <option value="workshop_fotografia_video">Workshop de Fotografia e Vídeo</option>
-                <option value="festival_gastronomia">Festival de Gastronomia (Food Trucks, Novas Tendências)</option>
-                <option value="maratona_e_sports">Maratona de Jogos de Vídeo (E-Sports)</option>
-                <option value="rally_aventura_ar_livre">Rally ou Desafio de Aventura ao Ar Livre</option>
-                <option value="exposicao_arte_contemporanea">Exposição de Arte Contemporânea</option>
-                <option value="palestra_carreira_empreendedorismo">Palestra sobre Carreira e Empreendedorismo Jovem</option>
-                <option value="encontro_tecnologia_startups">Encontro de Tecnologia e Startups (Hackathons)</option>
-                <option value="festival_cultura_urbana">Festival de Cultura Urbana (Hip Hop, Breakdance, Graffiti)</option>
-                <option value="festival_musica_indie">Festival de Música Indie</option>
-                <option value="karaoke_ao_vivo">Karaokê ao Vivo ou Competição de Talentos</option>
+                <option value="SHOW">show de bandas locais</option>
+                <option value="FESTIVAL_MUSICA_VIVA">festival de música ao vivo</option>
+                <option value="SHOW_DJS">show de DJs</option>
+                <option value="FESTIVAL_MUSICA_ELETRONICA">festival de música eletrônica</option>
+                <option value="SHOW_STANDUP">show de stand-up comedy</option>
+                <option value="CONCERTO_ROCK">concerto de rock</option>
+                <option value="FESTIVAL_CULTURA_POP">festival de cultura pop</option>
+                <option value="EVENTO_GOSPEL">evento gospel</option>
+                <option value="ENCONTRO_INFLUENCIADORES">encontro de influenciadores e criadores de conteúdo</option>
+                <option value="FESTIVAL_CINEMA_INDEPENDENTE">festival de cinema independente</option>
+                <option value="FEIRA_MODA_ESTILO">feira de moda e estilo jovem</option>
+                <option value="WORKSHOP_FOTOGRAFIA_VIDEO">workshop de fotografia e vídeo</option>
+                <option value="FESTIVAL_GASTRONOMIA">festival de gastronomia (food trucks, novas tendências)</option>
+                <option value="MARATONA_E_SPORTS">maratona de jogos de vídeo (e-sports)</option>
+                <option value="RALLY_AVENTURA_AR_LIVRE">rally ou desafio de aventura ao ar livre</option>
+                <option value="EXPOSICAO_ARTE_CONTEMPORANEA">exposição de arte contemporânea</option>
+                <option value="PALESTRA_CARREIRA_EMPREENDENDO">palestra sobre carreira e empreendedorismo jovem</option>
+                <option value="ENCONTRO_TECH_STARTUPS">encontro de tecnologia e startups (hackathons)</option>
+                <option value="FESTIVAL_CULTURA_URBANA">festival de cultura urbana (hip hop, breakdance, graffiti)</option>
+                <option value="FESTIVAL_MUSICA_INDIE">festival de música indie</option>
+                <option value="KARAOKE_AO_VIVO">karaokê ao vivo ou competição de talentos</option>
             </select>
         </div>
 
@@ -65,7 +69,6 @@
             <input type="time" class="input-date-time" required />
         </div>
 
-
         <div class="cost-options">
             <div class="radio-option">
                 <input type="radio" id="evento-gratuito" name="evento" value="gratuito">
@@ -77,7 +80,6 @@
             </div>
         </div>
 
-
         <textarea placeholder="Descrição do evento" class="textarea" required></textarea>
         <button type="submit" class="submit-btn">Publicar</button>
     </form>
@@ -87,6 +89,5 @@
     <p>&copy; 2025 City Vibe. Todos os direitos reservados.</p>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>

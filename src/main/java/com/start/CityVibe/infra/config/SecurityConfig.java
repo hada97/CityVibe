@@ -21,13 +21,19 @@ public class SecurityConfig  {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
+                    // Permitir o acesso a arquivos estáticos (JS, CSS, Imagens)
                     registry.requestMatchers(
                             "/",
                             "/login",
                             "/users/register",
                             "/swagger-ui/**",
-                            "/v3/api-docs/**")
-                            .permitAll();
+                            "/v3/api-docs/**",
+                            "/js/**",      // Adicione o caminho para os arquivos JS
+                            "/css/**",     // Adicione o caminho para os arquivos CSS
+                            "/images/**"   // Adicione o caminho para imagens, se necessário
+                    ).permitAll();
+
+                    // Qualquer outra URL precisa ser autenticada
                     registry.anyRequest().authenticated();
                 })
                 .oauth2Login(oauth2login -> {
@@ -50,18 +56,3 @@ public class SecurityConfig  {
                 .build();
     }
 }
-
-
-
-/*
-@Bean
-public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception { return http
-.authorizeHttpRequests (registry -> {
-}
-registry.requestMatchers("/"). permitAll();
-registry.anyRequest().authenticated();
-})
-.oauth2Login(Customizer.withDefaults())
-.formLogin(Customizer.withDefaults())
-.build();
- */
