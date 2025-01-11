@@ -1,0 +1,301 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #333; /* Cor cinza escuro para o fundo */
+    color: #f1f1f1; /* Texto claro para contraste */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Ajuste para o conteúdo ficar no topo */
+    height: 100vh;
+}
+
+header {
+    background-color: #2a3b4c; /* Cor azul escuro para cabeçalho */
+    color: white;
+    width: 100%; /* Garantir que o cabeçalho preencha toda a largura */
+    height: 50px; /* Altura do cabeçalho ajustada para 50px */
+    box-sizing: border-box; /* Garantir que o padding não afete a altura */
+    display: flex; /* Usar flexbox para alinhar verticalmente */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    justify-content: space-around; /* Alinha os itens com espaço entre eles */
+}
+
+
+
+header h1 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0; /* Remove a margem padrão */
+    padding: 0; /* Remove o padding se houver */
+    display: flex; /* Faz o h1 ser um item flexível */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Garante que o conteúdo esteja centrado horizontalmente */
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0 20px; /* Remove padding superior/inferior */
+    height: 40px; /* Define altura dos botões */
+    line-height: 40px; /* Centraliza o texto verticalmente */
+    background-color: #1e2a35; /* Azul mais claro para botões */
+    border-radius: 5px;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+    display: flex; /* Torna o botão um container flexível */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    justify-content: center; /* Garante que o conteúdo seja centralizado horizontalmente */
+}
+
+header nav a:hover {
+    background-color: #18222d; /* Azul mais escuro no hover */
+}
+
+/* Main */
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo do main */
+    justify-content: center; /* Centraliza verticalmente */
+    flex-grow: 1;
+}
+
+/* Título dentro do Main */
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Formulário */
+.event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #ffffff; /* Fundo do formulário em branco */
+    padding: 30px;
+    border-radius: 8px;
+    width: 500px; /* Certificando-se de que ocupa 100% da largura possível */
+    max-width: 500px; /* Limite máximo de largura */
+}
+
+/* Campos de entrada */
+.input-text, .textarea, .file-input {
+    width: 100%; /* Ajustando os inputs para 100% da largura do formulário */
+    padding: 12px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    background-color: white; /* Fundo branco para os inputs */
+    color: #333; /* Texto escuro para facilitar leitura */
+    font-size: 1rem;
+    height: 40px;
+    transition: border-color 0.3s ease;
+
+}
+
+.select-box {
+    width: 100%; /* Ajustando os inputs para 100% da largura do formulário */
+    padding: 12px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    background-color: white; /* Fundo branco para os inputs */
+    color: #333; /* Texto escuro para facilitar leitura */
+    font-size: 0.9rem;
+    height: 40px; /* Ajuste a altura para 40px ou 44px para garantir que o texto fique visível */
+    line-height: 1.5; /* Defina um line-height para garantir a legibilidade do texto */
+    transition: border-color 0.3s ease;
+}
+
+/* Campos de entrada */
+.textarea{
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    font-size: 1rem;
+    height: 80px;
+    transition: border-color 0.3s ease;
+}
+
+.input-date-time {
+    width: 48%; /* Ajusta os campos para ficarem lado a lado */
+    padding: 12px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    height: 40px;
+}
+
+/* Foco nos campos */
+.input-text:focus, .select-box:focus, .input-date-time:focus, .textarea:focus {
+    border-color: #3b6ba3; /* Azul para destaque no foco */
+    outline: none;
+}
+
+textarea {
+    height: 120px;
+}
+
+input[type="file"] {
+    display: none; /* Esconde o input file padrão */
+}
+
+/* Botão de enviar */
+button.submit-btn {
+    padding: 0; /* Remover o padding, pois já estamos ajustando a altura */
+    height: 40px; /* Definir a altura do botão para 40px */
+    background-color: #3b6ba3; /* Azul para o botão */
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+}
+
+button.submit-btn:hover {
+    background-color: #315b87; /* Azul mais escuro no hover */
+}
+
+
+footer {
+    background-color: #2a3b4c; /* Cor azul escuro para cabeçalho e rodapé */
+    color: white;
+    width: 100%; /* Garantir que o rodapé preencha toda a largura */
+    padding: 14px 0;
+    text-align: center;
+    margin-top: auto; /* Garante que o footer fique sempre na parte inferior */
+}
+
+footer p {
+    color: #ccc;
+}
+
+/* Estilização do campo de entrada de arquivo */
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.file-label {
+    display: inline-block;
+    background-color: #ffffff; /* Cor de fundo do botão */
+    color: #333; /* Cor do texto */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, border-color 0.3s; /* Transição para a borda */
+    text-align: left;
+    width: 100%; /* Garante que o label ocupe toda a largura do contêiner */
+    border: 1px solid #ccc;
+}
+
+.file-label:hover {
+    background-color: #ccc; /* Azul mais escuro ao passar o mouse */
+}
+
+/* Estilização dos campos de "Evento gratuito" e "Evento pago" */
+.cost-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+
+}
+
+.radio-option label {
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+/* Foco nos campos de data e hora */
+.input-date-time:focus {
+    border-color: #3b6ba3; /* Borda azul no foco */
+    outline: none;
+}
+
+/* Foco nos campos de entrada de texto, select e textarea */
+.input-text:focus, .select-box:focus, .input-date-time:focus, .textarea:focus {
+    border-color: #3b6ba3; /* Azul para destaque no foco */
+    outline: none;
+}
+
+
+/* Estilização dos campos de "Evento gratuito" e "Evento pago" */
+.cost-options {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.radio-option input[type="radio"] {
+    display: none; /* Ocultar o radio button padrão */
+}
+
+.radio-option label {
+    display: flex;
+    background-color: #3b6ba3; /* Cor de fundo do botão */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center; /* Centraliza o texto horizontalmente */
+    transition: background-color 0.3s;
+    width: 96px; /* Largura fixa de 96px */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente no flexbox */
+    align-items: center; /* Centraliza o conteúdo verticalmente no flexbox */
+}
+
+
+.radio-option label:hover {
+    background-color: #315b87; /* Azul mais escuro ao passar o mouse */
+}
+
+/* Quando o radio button estiver selecionado */
+.radio-option input[type="radio"]:checked + label {
+    background-color: #1e2a35; /* Cor para o botão selecionado */
+}
+
+.radio-option input[type="radio"]:focus + label {
+    border: 2px solid #3b6ba3; /* Bordas mais destacadas quando o campo recebe o foco */
+}

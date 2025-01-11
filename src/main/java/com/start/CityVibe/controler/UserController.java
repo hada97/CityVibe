@@ -99,7 +99,7 @@ public class UserController {
         boolean isDeleted = userService.deleteUser(id);
         if (isDeleted) {
             return ResponseEntity.status(302)
-                    .header("Location", "/custom_login.html")
+                    .header("Location", "/login.html")
                     .build();
         }
         return ResponseEntity.notFound().build();

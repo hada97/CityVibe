@@ -1,96 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Criar Evento</title>
-
-  <link rel="stylesheet" href="/index/style.css" />
-  <script defer src="/index/script.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Vibe</title>
+    <link rel="stylesheet" href="/index/styles.css">
 </head>
 <body>
-<div class="container">
-  <header class="header">
+<header>
 
-    <div class="actions">
-      <form action="" method="POST">
-        <button class="publish-btn">Publicar evento</button>
-      </form>
-      <form action="" method="POST">
-        <button class="login-btn">Entrar</button>
-      </form>
-    </div>
-  </header>
+        <h1>City Vibe</h1>
+        <nav>
+            <a href="login" class="btn">Entrar</a>
+            <a href="home" class="btn">Início</a>
+        </nav>
 
-  <main class="main-content">
-    <h1>Criar Evento</h1>
+</header>
+
+<main class="main-content">
+    <h1>Publicar Evento</h1>
     <form class="event-form">
-      <div class="image-upload">
-        <span>Escolher capa</span>
-        <input type="file" accept="image/*" class="file-input" />
-      </div>
 
-      <div class="form-fields-select">
-        <input placeholder="Nome do evento" type="text" class="input-text" required />
-        <select class="select-box" required>
-          <option value="" disabled selected>Tipo de evento</option>
-          <option value="show">Show de Bandas Locais</option>
-          <option value="festival_musica_viva">Festival de Música ao Vivo</option>
-          <option value="show_djs">Show de DJs</option>
-          <option value="festival_musica_eletronica">Festival de Música Eletrônica</option>
-          <option value="show_standup">Show de Stand-Up Comedy</option>
-          <option value="concerto_rock">Concerto de Rock</option>
-          <option value="festival_cultura_pop">Festival de Cultura Pop</option>
-          <option value="evento_gospel">Evento Gospel</option>
-          <option value="encontro_influenciadores">Encontro de Influenciadores e Criadores de Conteúdo</option>
-          <option value="festival_cinema_independente">Festival de Cinema Independente</option>
-          <option value="feira_moda_estilo">Feira de Moda e Estilo Jovem</option>
-          <option value="workshop_fotografia_video">Workshop de Fotografia e Vídeo</option>
-          <option value="festival_gastronomia">Festival de Gastronomia (Food Trucks, Novas Tendências)</option>
-          <option value="maratona_e_sports">Maratona de Jogos de Vídeo (E-Sports)</option>
-          <option value="rally_aventura_ar_livre">Rally ou Desafio de Aventura ao Ar Livre</option>
-          <option value="exposicao_arte_contemporanea">Exposição de Arte Contemporânea</option>
-          <option value="palestra_carreira_empreendedorismo">Palestra sobre Carreira e Empreendedorismo Jovem</option>
-          <option value="encontro_tecnologia_startups">Encontro de Tecnologia e Startups (Hackathons)</option>
-          <option value="festival_cultura_urbana">Festival de Cultura Urbana (Hip Hop, Breakdance, Graffiti)</option>
-          <option value="festival_musica_indie">Festival de Música Indie</option>
-          <option value="karaoke_ao_vivo">Karaokê ao Vivo ou Competição de Talentos</option>
-        </select>
-      </div>
-
-      <div class="form-fields">
-        <input placeholder="Cidade" type="text" class="input-text" />
-        <input placeholder="Endereço" type="text" class="input-text" required />
-        <input type="text" placeholder="Link (opcional)" class="input-text" />
-      </div>
-
-      <div class="date-time">
-        <input type="date" class="input-date-time" required />
-        <input type="time" class="input-date-time" required />
-      </div>
-
-      <div class="cost-options">
-        <div class="radio-option">
-          <input type="radio" id="gratuito" name="event-cost" checked value="gratuito" />
-          <label for="gratuito">Evento gratuito</label>
+        <div class="image-upload">
+            <input type="file" id="file" class="file-input">
+            <label for="file" class="file-label">Escolher capa</label>
         </div>
-        <div class="radio-option">
-          <input type="radio" id="pago" name="event-cost" value="pago" />
-          <label for="pago">Evento pago</label>
-        </div>
-      </div>
 
-      <textarea placeholder="Descrição do evento" class="textarea" required></textarea>
-      <button type="submit" class="submit-btn">Publicar</button>
+
+        <div class="form-fields-select">
+            <input placeholder="Nome do evento" type="text" class="input-text" required />
+            <select class="select-box" required>
+                <option value="" disabled selected>Tipo de evento</option>
+                <option value="show">Show de Bandas Locais</option>
+                <option value="festival_musica_viva">Festival de Música ao Vivo</option>
+                <option value="show_djs">Show de DJs</option>
+                <option value="festival_musica_eletronica">Festival de Música Eletrônica</option>
+                <option value="show_standup">Show de Stand-Up Comedy</option>
+                <option value="concerto_rock">Concerto de Rock</option>
+                <option value="festival_cultura_pop">Festival de Cultura Pop</option>
+                <option value="evento_gospel">Evento Gospel</option>
+                <option value="encontro_influenciadores">Encontro de Influenciadores e Criadores de Conteúdo</option>
+                <option value="festival_cinema_independente">Festival de Cinema Independente</option>
+                <option value="feira_moda_estilo">Feira de Moda e Estilo Jovem</option>
+                <option value="workshop_fotografia_video">Workshop de Fotografia e Vídeo</option>
+                <option value="festival_gastronomia">Festival de Gastronomia (Food Trucks, Novas Tendências)</option>
+                <option value="maratona_e_sports">Maratona de Jogos de Vídeo (E-Sports)</option>
+                <option value="rally_aventura_ar_livre">Rally ou Desafio de Aventura ao Ar Livre</option>
+                <option value="exposicao_arte_contemporanea">Exposição de Arte Contemporânea</option>
+                <option value="palestra_carreira_empreendedorismo">Palestra sobre Carreira e Empreendedorismo Jovem</option>
+                <option value="encontro_tecnologia_startups">Encontro de Tecnologia e Startups (Hackathons)</option>
+                <option value="festival_cultura_urbana">Festival de Cultura Urbana (Hip Hop, Breakdance, Graffiti)</option>
+                <option value="festival_musica_indie">Festival de Música Indie</option>
+                <option value="karaoke_ao_vivo">Karaokê ao Vivo ou Competição de Talentos</option>
+            </select>
+        </div>
+
+        <div class="form-fields">
+            <input placeholder="Cidade" type="text" class="input-text" />
+            <input placeholder="Endereço" type="text" class="input-text" required />
+            <input type="text" placeholder="Link (opcional)" class="input-text" />
+        </div>
+
+        <div class="date-time">
+            <input type="date" class="input-date-time" required />
+            <input type="time" class="input-date-time" required />
+        </div>
+
+
+        <div class="cost-options">
+            <div class="radio-option">
+                <input type="radio" id="evento-gratuito" name="evento" value="gratuito">
+                <label for="evento-gratuito" class="radio-label">Gratuito</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="evento-pago" name="evento" value="pago">
+                <label for="evento-pago" class="radio-label">Pago</label>
+            </div>
+        </div>
+
+
+        <textarea placeholder="Descrição do evento" class="textarea" required></textarea>
+        <button type="submit" class="submit-btn">Publicar</button>
     </form>
-  </main>
+</main>
 
-  <footer class="footer">
-    <div class="footer-content">
+<footer>
+    <p>&copy; 2025 City Vibe. Todos os direitos reservados.</p>
+</footer>
 
-    </div>
-  </footer>
-</div>
+<script src="script.js"></script>
 </body>
 </html>

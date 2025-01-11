@@ -17,16 +17,16 @@ public class ViewController {
         return "profile/profile";
     }
 
-    @GetMapping("/")
-    public String index() {
-        return "index/index";
+
+    @GetMapping("/home")
+    public String home() {
+        return "home/home";
     }
 
     @GetMapping("/login")
     public String login() {
-        return "login/custom_login";
+        return "login/login";
     }
-
 
     @GetMapping("/index")
     public String index(OAuth2AuthenticationToken token, Model model) {
