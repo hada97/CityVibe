@@ -48,7 +48,6 @@ async function carregarEventos() {
                     <h3 class="card-title">${evento.nome}</h3>
                     <p class="card-description">${evento.descricao}</p>
                     <p class="card-date">
-                        <strong>Data e Hora:</strong>
                         ${new Date(evento.data).toLocaleDateString()}
                         às
                         ${new Date(

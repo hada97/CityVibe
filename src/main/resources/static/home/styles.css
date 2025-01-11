@@ -158,15 +158,13 @@ footer {
     border: 1px solid #ccc;
 }
 
-
 .event-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Exibe um card por linha, mas vai se ajustar */
-    gap: 20px;  /* Espaçamento entre os cards */
-    max-height: 100%;  /* Altura do contêiner ajustada para ocupar a altura da tela */
-    justify-items: center;
-    overflow-y: auto;
-    border-radius: 8px;/* Permite rolar para ver mais cards */
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(636px, 1fr)); /* Garantir que o card tenha 636px de largura */
+        gap: 20px;  /* Espaçamento entre os cards */
+        max-height: 100%;  /* Altura do contêiner ajustada para ocupar a altura da tela */
+        justify-items: center;
+        overflow-y: auto;
 }
 
 
@@ -174,15 +172,17 @@ footer {
 .card {
     background-color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 600px;  /* Largura fixa de 600px */
-    height: 250px;  /* Altura fixa de 250px */
+    width: 636px;  /* Largura fixa de 636px */
+    height: 250px;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
+    border-radius: 8px;
+    cursor:pointer;
 }
 
 .card:hover {
-    transform: translateY(-10px);  /* Adiciona um efeito de hover */
+    transform: translateY(-5px);  /* Adiciona um efeito de hover */
 }
 
 .div-content {
@@ -193,9 +193,12 @@ footer {
 }
 
 .card-image {
-    width: 100%;
-    object-fit: cover;  /* Faz a imagem cobrir toda a área disponível */
+    width: 636px;  /* Largura fixa para a imagem */
+    height: 159px;  /* Altura fixa para a imagem */
+    object-fit: cover;  /* Faz a imagem cobrir toda a área disponível sem distorcer */
+    border-top: 8px;
 }
+
 
 .card-content {
     padding: 10px; /* Adiciona espaçamento entre a borda do card e o conteúdo */
@@ -212,7 +215,7 @@ footer {
 }
 
 .card-title, .card-description, .card-content {
-    color: #000000;  /* Cor do texto mais escura */
+    color: #777777;  /* Cor do texto mais escura */
 }
 
 .card-city {
@@ -222,6 +225,6 @@ footer {
         align-items: center;        /* Alinha o texto no centro verticalmente */
         justify-content: center;    /* Centraliza o texto horizontalmente */
         height: 100%;               /* Faz a span ocupar toda a altura do container pai (div-content) */
-        padding-right: 10px;         /* Adiciona um leve espaçamento à esquerda */
+        padding: 10px;         /* Adiciona um leve espaçamento à esquerda */
         margin-top: auto;
 }
