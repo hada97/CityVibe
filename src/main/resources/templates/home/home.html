@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City Vibe</title>
-    <link rel="stylesheet" href="/index/styles.css">
+    <title>City Vibe - Eventos</title>
+    <link rel="stylesheet" href="/home/styles.css">
     <script defer src="/home/script.js"></script>
 </head>
 <body>
 <header>
     <h1>City Vibe</h1>
     <nav>
-        <a href="login" class="btn">Publicar Evento</a>
+        <a href="/login" class="btn">Login</a>
     </nav>
-
 </header>
 
 <main class="main-content">
+    <!-- Barra de pesquisa -->
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Buscar eventos..." oninput="filtrarEventos()">
+    </div>
 
+    <!-- Contêiner de Cards de Eventos -->
+    <div id="event-cards-container" class="event-cards-container">
+        <!-- Os cards de eventos serão carregados aqui -->
+    </div>
 </main>
 
 <footer>
     <p>&copy; 2025 City Vibe. Todos os direitos reservados.</p>
 </footer>
-
 </body>
 </html>

@@ -109,3 +109,161 @@ button.submit-btn {
 button.submit-btn:hover {
     background-color: #315b87; /* Azul mais escuro no hover */
 }
+
+
+
+
+
+
+Para implementar o que você descreveu, ou seja, uma barra de pesquisa e cards de eventos em um layout de colunas, você pode seguir os passos abaixo:
+
+Estrutura HTML: Adicionar uma barra de pesquisa e o contêiner de cards dentro do <main>.
+Estilo CSS: Usar Flexbox ou Grid para garantir que os cards se organizem de forma responsiva em colunas.
+Interação com a API: Usar JavaScript para buscar os eventos de uma API e exibi-los no formato de cards.
+Vou fornecer um exemplo de como você pode implementar isso.
+
+1. Estrutura HTML
+Aqui está a estrutura HTML com a barra de pesquisa e os cards de eventos dentro do main.
+
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Vibe</title>
+    <link rel="stylesheet" href="/index/styles.css">
+    <script defer src="/home/script.js"></script>
+</head>
+<body>
+<header>
+    <h1>City Vibe</h1>
+    <nav>
+        <a href="login" class="btn">Publicar Evento</a>
+    </nav>
+</header>
+
+<main class="main-content">
+    <!-- Barra de pesquisa -->
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Buscar eventos..." oninput="filtrarEventos()">
+    </div>
+
+    <!-- Contêiner de Cards -->
+    <div id="event-cards-container" class="event-cards-container">
+        <!-- Os cards de eventos serão carregados aqui -->
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 City Vibe. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
+2. Estilos CSS (Para a barra de pesquisa e layout de cards)
+Aqui, você pode usar Flexbox para organizar os cards em colunas e garantir que o layout seja responsivo.
+
+css
+Copiar código
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #0056b3;
+}
+
+nav a:hover {
+    background-color: #004085;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+/* Barra de pesquisa */
+.search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#search {
+    padding: 10px;
+    width: 80%;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+
+.event-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Exibe um card por linha, mas vai se ajustar */
+    gap: 20px;  /* Espaçamento entre os cards */
+    max-height: 90vh;  /* Altura do contêiner ajustada para ocupar a altura da tela */
+    padding: 20px;
+    justify-items: center;
+    overflow-y: auto;  /* Permite rolar para ver mais cards */
+}
+
+/* Estilo para cada card de evento */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;  /* Largura fixa de 300px */
+    height: 180px;  /* Altura fixa de 220px */
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;  /* Organiza conteúdo verticalmente */
+}
+
+.card:hover {
+    transform: translateY(-10px);  /* Adiciona um efeito de hover */
+}
+
+.card-image {
+    width: 100%;
+    object-fit: cover;  /* Faz a imagem cobrir toda a área disponível */
+}
+
+.card-content {
+    padding: 14px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.card-title, .card-description, .card-content {
+    color: #000000;  /* Cor do texto mais escura */
+}
