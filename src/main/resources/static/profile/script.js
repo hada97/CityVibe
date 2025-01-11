@@ -1,7 +1,6 @@
 let userId = null;
 const baseUrl = "http://localhost:8080";
 const token = localStorage.getItem("authToken");
-const apiUrlEventos = `${baseUrl}/eventos`;
 
 
 // Função para obter o ID do usuário
@@ -28,15 +27,13 @@ async function carregarMeusEventos() {
   }
 
   try {
-    // URL personalizada para carregar os eventos do usuário
-    const url = `${baseUrl}/users/${userId}/eventos?page=0&size=5`;
+    const url = `${baseUrl}/users/eventos/${userId}?page=0&size=5`;
 
-    // Requisição GET para obter os eventos do usuário específico
     const response = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`, // Envia o token de autenticação no cabeçalho
+        "Authorization": `Bearer ${token}`,
       },
     });
 
@@ -46,7 +43,16 @@ async function carregarMeusEventos() {
     }
 
     // Converte a resposta para JSON
-    const eventos = await response.json();
+    const data = await response.json();
+
+    // Verifica se o campo "content" contém o array de eventos
+    const eventos = data.content; // Aqui pegamos o array de eventos dentro de "content"
+    console.log("Eventos carregados:", eventos); // Para verificar o que está sendo retornado
+
+    if (!Array.isArray(eventos)) {
+      console.error("A resposta não contém um array de eventos.");
+      return;
+    }
 
     // Seleciona o contêiner onde os eventos serão exibidos
     const container = document.getElementById("event-cards-container");
@@ -66,9 +72,7 @@ async function carregarMeusEventos() {
                     <p class="card-date">
                         ${new Date(evento.data).toLocaleDateString()}
                         às
-                        ${new Date(
-                          `${evento.data}T${evento.hora}`
-                        ).toLocaleTimeString([], {
+                        ${new Date(`${evento.data}T${evento.hora}`).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}
@@ -86,6 +90,7 @@ async function carregarMeusEventos() {
   }
 }
 
+
 // Função para fazer o logout
 function logout() {
   alert("Você saiu!");
@@ -96,4 +101,5 @@ function logout() {
 // Inicializa o processo quando a página for carregada
 document.addEventListener("DOMContentLoaded", async () => {
   await fetchUserId();
+  carregarMeusEventos()
 });

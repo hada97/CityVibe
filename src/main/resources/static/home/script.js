@@ -1,17 +1,8 @@
 let userId = null;
-
-// Variáveis globais
 const baseUrl = "http://localhost:8080";
 const apiUrlEventos = `${baseUrl}/eventos`;
-const token = localStorage.getItem("authToken"); // Obtém o token de autenticação do localStorage
+const token = localStorage.getItem("authToken"); // Obtém o token
 
-// Função para verificar se o usuário está logado
-function verificarLogin() {
-  if (!token) {
-    alert("Você precisa estar logado para visualizar os eventos.");
-    window.location.href = "/login"; // Redireciona para a página de login se o token não existir
-  }
-}
 
 // Função para carregar os eventos da API
 async function carregarEventos() {
@@ -37,7 +28,7 @@ async function carregarEventos() {
     container.innerHTML = ""; // Limpa o conteúdo anterior
 
     // Cria os cards para cada evento
-    eventos.forEach((evento) => {
+      eventos.forEach((evento) => {
       const card = document.createElement("div");
       card.classList.add("card");
 
@@ -72,30 +63,18 @@ async function carregarEventos() {
   }
 }
 
-// Inicializa o processo quando a página for carregada
-document.addEventListener("DOMContentLoaded", () => {
-  carregarEventos(); // Carrega os eventos
-});
 
 // Função para fazer o logout
 function logout() {
   alert("Você saiu!");
   localStorage.removeItem("authToken"); // Remove o token de autenticação
-  window.location.href = "/login"; // Redireciona para a página de login
+  window.location.href = "/"; // Redireciona para a página de login
 }
-
-// Inicializa o processo quando a página for carregada
-document.addEventListener("DOMContentLoaded", () => {
-  carregarEventos(); // Carrega os eventos
-});
 
 
 // script.js
 document.addEventListener("DOMContentLoaded", () => {
     const loginButton = document.querySelector(".btn");
-
-    // Obtém o token de autenticação armazenado no localStorage
-    const token = localStorage.getItem("authToken");
 
     console.log("Token obtido:", token); // Log para depuração
 
@@ -108,15 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
         loginButton.href = "/login"; // Redireciona para a página de login
     }
 });
-
-
-function fazerLogin() {
-    const token = "seu_token_de_autenticacao"; // Este token seria fornecido pelo servidor após login bem-sucedido
-    localStorage.setItem("authToken", token); // Armazena o token no localStorage
-
-    // Redireciona para a página index
-    window.location.href = "/index"; // Aqui seria a sua página de eventos
-}
 
 
 // Busca o userId na inicialização
@@ -134,3 +104,8 @@ const fetchUserId = async () => {
     console.error("Erro ao buscar userId:", error);
   }
 };
+
+// Inicializa o processo quando a página for carregada
+document.addEventListener("DOMContentLoaded", () => {
+  carregarEventos(); // Carrega os eventos
+});

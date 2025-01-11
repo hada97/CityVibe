@@ -36,7 +36,7 @@ public class UserController {
         return userService.getAll(page, size);
     }
 
-    @GetMapping("/{id}/eventos")
+    @GetMapping("/eventos/{id}")
     public Page<Evento> getUserEvents(
             @PathVariable Long id, // Pega o ID do usuário
             @RequestParam(defaultValue = "0") int page,
