@@ -13,4 +13,4 @@ public class RestConfig {
     }
 }
 
-//GET http://localhost:8080/geocode?endereco1=New+York&endereco2=Los+Angeles
+//GET http://localRhost:8080/geocode?endereco1=New+York&endereco2=Los+Angeles

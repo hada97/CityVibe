@@ -1,5 +1,5 @@
 let userId = null;
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://city-vibe-cjc3gae3fphaa9gu.canadacentral-01.azurewebsites.net";
 const apiUrlEventos = `${baseUrl}/eventos`;
 const token = localStorage.getItem("authToken");
 
@@ -49,8 +49,7 @@ document
     const description = document.querySelector('textarea[placeholder="Descrição do evento"]').value;
     const eventCover = document.querySelector('#event-cover').value;
 
-    // Combina data e hora no formato 'yyyy-MM-dd'T'HH:mm:ss'
-    const fullDateTime = `${date}T${time}:00`;  // Adiciona :00 para completar os segundos
+    const fullDateTime = `${date}T${time}:00`;
 
     // Criar o objeto de dados a serem enviados para a API
     const eventData = {
@@ -63,8 +62,8 @@ document
       hora: fullDateTime,
       custo: cost,
       descricao: description,
-      capa: eventCover, // Adiciona a URL da capa do evento
-      userId: userId // Inclui o userId carregado
+      capa: eventCover,
+      userId: userId
     };
 
     // Tentando enviar para a API
@@ -80,7 +79,7 @@ document
 
       if (response.ok) {
         alert("Evento criado com sucesso!");
-        document.querySelector(".event-form").reset(); // Limpa o formulário após sucesso
+        document.querySelector(".event-form").reset();
       } else {
         const data = await response.json();
         if (data.message) {
@@ -95,7 +94,7 @@ document
   });
 
 // Carregar o nome do usuário após login
-fetch("http://localhost:8080/api/user/profile", {
+fetch(fetch(`${baseUrl}/api/user/profile`, {
   headers: {
     Authorization: `Bearer ${token}`,
   },

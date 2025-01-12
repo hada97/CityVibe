@@ -1,5 +1,5 @@
 let userId = null;
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://city-vibe-cjc3gae3fphaa9gu.canadacentral-01.azurewebsites.net/";
 const token = localStorage.getItem("authToken");
 
 
@@ -25,7 +25,6 @@ async function carregarMeusEventos() {
     console.error("ID do usuário não encontrado");
     return;
   }
-
   try {
     const url = `${baseUrl}/users/eventos/${userId}?page=0&size=5`;
 
@@ -37,28 +36,22 @@ async function carregarMeusEventos() {
       },
     });
 
-    // Verifica se a resposta da API foi bem-sucedida
     if (!response.ok) {
       throw new Error("Falha ao carregar os eventos");
     }
 
-    // Converte a resposta para JSON
     const data = await response.json();
-
-    // Verifica se o campo "content" contém o array de eventos
-    const eventos = data.content; // Aqui pegamos o array de eventos dentro de "content"
-    console.log("Eventos carregados:", eventos); // Para verificar o que está sendo retornado
+    const eventos = data.content;
+    console.log("Eventos carregados:", eventos);
 
     if (!Array.isArray(eventos)) {
       console.error("A resposta não contém um array de eventos.");
       return;
     }
 
-    // Seleciona o contêiner onde os eventos serão exibidos
     const container = document.getElementById("event-cards-container");
-    container.innerHTML = ""; // Limpa o conteúdo anterior
+    container.innerHTML = "";
 
-    // Cria os cards para cada evento
     eventos.forEach((evento) => {
       const card = document.createElement("div");
       card.classList.add("card");
@@ -82,7 +75,7 @@ async function carregarMeusEventos() {
             </div>
         `;
 
-      container.appendChild(card); // Adiciona o card ao contêiner
+      container.appendChild(card);
     });
   } catch (error) {
     console.error("Erro ao carregar eventos:", error);
@@ -98,7 +91,7 @@ function logout() {
   window.location.href = "/"; // Redireciona para a página de login
 }
 
-// Inicializa o processo quando a página for carregada
+// Inicialização ao carregar o DOM
 document.addEventListener("DOMContentLoaded", async () => {
   await fetchUserId();
   carregarMeusEventos()
