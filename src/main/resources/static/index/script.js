@@ -94,6 +94,7 @@ document
   });
 
 // Carregar o nome do usuário após login
+/*
 fetch(fetch(`${baseUrl}/api/user/profile`, {
   headers: {
     Authorization: `Bearer ${token}`,
@@ -114,7 +115,7 @@ fetch(fetch(`${baseUrl}/api/user/profile`, {
     if (userNameElement) {
       userNameElement.innerText = "Erro ao carregar o nome";
     }
-  });
+  });*/
 
 // Inicialização ao carregar o DOM
 document.addEventListener("DOMContentLoaded", async () => {

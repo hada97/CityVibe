@@ -28,9 +28,11 @@ public class SecurityConfig  {
                             "/users/register",
                             "/swagger-ui/**",
                             "/v3/api-docs/**",
-                            "/js/**",      // Adicione o caminho para os arquivos JS
-                            "/css/**",     // Adicione o caminho para os arquivos CSS
-                            "/images/**"   // Adicione o caminho para imagens, se necessário
+                            "/js/**",
+                            "/css/**",
+                            "/images/**",
+                            "/static/**"
+
                     ).permitAll();
 
                     // Qualquer outra URL precisa ser autenticada
