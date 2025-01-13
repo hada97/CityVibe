@@ -4,6 +4,7 @@ import com.start.CityVibe.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
@@ -32,8 +33,10 @@ public class SecurityConfig  {
                             "/css/**",
                             "/images/**",
                             "/static/**"
-
                     ).permitAll();
+
+                    // Permitir acesso público ao endpoint GET /api/eventos
+                    registry.requestMatchers(HttpMethod.GET, "/eventos/**").permitAll();
 
                     // Qualquer outra URL precisa ser autenticada
                     registry.anyRequest().authenticated();
