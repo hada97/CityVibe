@@ -3,6 +3,7 @@ package com.start.CityVibe.controler;
 import com.start.CityVibe.domain.evento.*;
 import com.start.CityVibe.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class EventoController {
     @Autowired
     private EventoService eventoService;
 
+
     @PostMapping
     public ResponseEntity<EventoDetail> criarEvento(@RequestBody EventoDTO eventoDTO) {
         var event = eventoService.salvarEvento(eventoDTO);
@@ -23,19 +25,26 @@ public class EventoController {
     }
 
 
-    // Obter todos os eventos
     @GetMapping
     public ResponseEntity<List<Evento>> listarEventos() {
         List<Evento> eventos = eventoService.listarEventos();
         return new ResponseEntity<>(eventos, HttpStatus.OK);
     }
 
-    // Obter um evento pelo ID
+
     @GetMapping("/{id}")
     public ResponseEntity<Evento> obterEvento(@PathVariable Long id) {
         Optional<Evento> evento = eventoService.obterEventoPorId(id);
         return evento.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/buscar")
+    public Page<Evento> buscarEventosPorNome(
+            @RequestParam("nome") String nome,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return eventoService.buscarEventosPorNome(nome, page, size);
     }
 
 
@@ -48,8 +57,7 @@ public class EventoController {
             EventoDetail eventoAtualizado = eventoService.salvarEvento(evento.toDTO());
             return new ResponseEntity<EventoDetail>(eventoAtualizado, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
     }
 
 
@@ -60,7 +68,7 @@ public class EventoController {
         if (removal) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
     }
+
 }

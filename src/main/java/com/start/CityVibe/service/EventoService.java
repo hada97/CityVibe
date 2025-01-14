@@ -70,4 +70,10 @@ public class EventoService {
         Pageable pageable = PageRequest.of(page, size);
         return eventoRepository.findByUserId(userId, pageable);
     }
+
+    public Page<Evento> buscarEventosPorNome(String nome, int page, int size) {
+        // Página começa em 0, então a primeira página é 0
+        Pageable pageable = PageRequest.of(page, size);
+        return eventoRepository.findByNomeContainingIgnoreCase(nome, pageable);
+    }
 }
