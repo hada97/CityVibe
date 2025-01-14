@@ -3,7 +3,7 @@ package com.start.CityVibe.controler;
 import com.start.CityVibe.domain.evento.*;
 import com.start.CityVibe.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +26,13 @@ public class EventoController {
 
 
     @GetMapping
-    public ResponseEntity<List<Evento>> listarEventos() {
-        List<Evento> eventos = eventoService.listarEventos();
+    public ResponseEntity<Page<Evento>> listarEventos(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Evento> eventos = eventoService.listarEventos(pageable);
+
         return new ResponseEntity<>(eventos, HttpStatus.OK);
     }
 
@@ -47,6 +52,15 @@ public class EventoController {
         return eventoService.buscarEventosPorNome(nome, page, size);
     }
 
+    @GetMapping("/cidade/{cidade}")
+    public Page<Evento> buscarEventosPorCidade(
+            @PathVariable String cidade,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        return eventoService.buscarEventosPorCidade(cidade, page, size);
+    }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<EventoDetail> atualizarEvento(@PathVariable Long id, @RequestBody Evento evento) {
@@ -58,6 +72,16 @@ public class EventoController {
             return new ResponseEntity<EventoDetail>(eventoAtualizado, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<EventoDetail> atualizarEvento(@PathVariable Long id, @RequestBody EventoUpdateDTO eventoUpdateDTO) {
+        EventoDetail eventoAtualizado = eventoService.atualizarEvento(id, eventoUpdateDTO);
+        if (eventoAtualizado != null) {
+            return new ResponseEntity<>(eventoAtualizado, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 
