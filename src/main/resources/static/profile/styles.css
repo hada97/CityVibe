@@ -1,230 +1,198 @@
 /* Global styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #777777, #c9c9c9);
-    color: #f1f1f1; /* Texto claro para contraste */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Ajuste para o conteúdo ficar no topo */
-    height: 300vh;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(to right, #777777, #c9c9c9);
+  color: #f1f1f1; /* Texto claro para contraste */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Ajuste para o conteúdo ficar no topo */
+  min-height: 100%
 }
 
 header {
-    background: linear-gradient(to right, #2a3b4c, #c9c9c9);
-    color: white;
-    width: 100%; /* Garantir que o cabeçalho preencha toda a largura */
-    height: 50px; /* Altura do cabeçalho ajustada para 50px */
-    box-sizing: border-box; /* Garantir que o padding não afete a altura */
-    display: flex; /* Usar flexbox para alinhar verticalmente */
-    align-items: center; /* Alinha os itens verticalmente no centro */
-    justify-content: space-around; /* Alinha os itens com espaço entre eles */
+  background: linear-gradient(to right, #2a3b4c, #c9c9c9);
+  color: white;
+  width: 100%; /* Garantir que o cabeçalho preencha toda a largura */
+  height: 50px; /* Altura do cabeçalho ajustada para 50px */
+  box-sizing: border-box; /* Garantir que o padding não afete a altura */
+  display: flex; /* Usar flexbox para alinhar verticalmente */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  justify-content: space-around; /* Alinha os itens com espaço entre eles */
 }
 
 header h1 {
-    font-size: 1.4rem;
-    margin: 0; /* Remove a margem padrão */
-    display: flex; /* Faz o h1 ser um item flexível */
-    align-items: center; /* Alinha verticalmente */
-    justify-content: center; /* Garante que o conteúdo esteja centrado horizontalmente */
+  font-size: 1.4rem;
+  margin: 0; /* Remove a margem padrão */
+  display: flex; /* Faz o h1 ser um item flexível */
+  align-items: center; /* Alinha verticalmente */
+  justify-content: center; /* Garante que o conteúdo esteja centrado horizontalmente */
 }
 
 header nav {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 header nav a {
-    color: white;
-    text-decoration: none;
-    padding: 0 20px; /* Remove padding superior/inferior */
-    height: 40px; /* Define altura dos botões */
-    line-height: 40px; /* Centraliza o texto verticalmente */
-    background-color: #1e2a35; /* Azul mais claro para botões */
-    border-radius: 5px;
-    margin: 0 10px;
-    transition: background-color 0.3s;
-    display: flex; /* Torna o botão um container flexível */
-    align-items: center; /* Alinha o conteúdo verticalmente */
-    justify-content: center; /* Garante que o conteúdo seja centralizado horizontalmente */
+  color: white;
+  text-decoration: none;
+  padding: 0 20px; /* Remove padding superior/inferior */
+  height: 40px; /* Define altura dos botões */
+  line-height: 40px; /* Centraliza o texto verticalmente */
+  background-color: #1e2a35; /* Azul mais claro para botões */
+  border-radius: 5px;
+  margin: 0 10px;
+  transition: background-color 0.3s;
+  display: flex; /* Torna o botão um container flexível */
+  align-items: center; /* Alinha o conteúdo verticalmente */
+  justify-content: center; /* Garante que o conteúdo seja centralizado horizontalmente */
 }
 
 header nav a:hover {
-    background-color: #18222d; /* Azul mais escuro no hover */
+  background-color: #18222d; /* Azul mais escuro no hover */
 }
 
 /* Main */
 main {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo do main */
-    flex-grow: 1;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo do main */
+  flex-grow: 1;
+  width: 100%;
 }
 
 /* Título dentro do Main */
 h1 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 /* Footer */
-footer {
+ footer {
     background: linear-gradient(to right, #2a3b4c, #c9c9c9);
     color: white;
     width: 100%;
     padding: 14px 0;
     text-align: center;
     margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
 }
 
 footer p {
-    color: #ccc;
+  color: #ccc;
 }
 
 /* Botão de enviar */
 button.submit-btn {
-    padding: 0;
-    height: 40px;
-    background-color: #3b6ba3
-    color: white;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
+  padding: 0;
+  height: 40px;
+  background-color: #3b6ba3;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
 }
 
 button.submit-btn:hover {
-    background-color: #315b87; /* Azul mais escuro no hover */
-}
-
-
-/* Estilos Gerais */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-header {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #0056b3;
-}
-
-nav a:hover {
-    background-color: #004085;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
+  background-color: #315b87; /* Azul mais escuro no hover */
 }
 
 /* Barra de pesquisa */
 .search-container {
-    text-align: center;
-    margin: 20px 0;
+  text-align: center;
+  margin: 20px 0;
 }
 
 #search {
-    padding: 10px;
-    width: 300px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
+/* Contêiner dos Cards */
 .event-cards-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(636px, 1fr)); /* Garantir que o card tenha 636px de largura */
-        gap: 20px;  /* Espaçamento entre os cards */
-        max-height: 100%;  /* Altura do contêiner ajustada para ocupar a altura da tela */
-        justify-items: center;
-        overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(636px, 1fr));
+  gap: 20px;
+  max-height: 100%;
+  justify-items: center;
+  overflow-y: auto;
 }
 
-
-/* Estilo para cada card de evento */
 .card {
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 636px;  /* Largura fixa de 636px */
-    height: 250px;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-    cursor:pointer;
-}
-
-.card:hover {
-    transform: translateY(-5px);  /* Adiciona um efeito de hover */
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 636px;
+  height: 250px;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .div-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Centraliza o conteúdo do main */
-    height: 100%;  /* Garante que ocupe toda a altura do contêiner */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
 .card-image {
-    width: 636px;  /* Largura fixa para a imagem */
-    height: 159px;  /* Altura fixa para a imagem */
-    object-fit: cover;  /* Faz a imagem cobrir toda a área disponível sem distorcer */
-    border-top: 8px;
+  width: 636px;
+  height: 159px;
+  object-fit: cover;
+  border-top: 8px;
 }
 
-
 .card-content {
-    padding: 10px; /* Adiciona espaçamento entre a borda do card e o conteúdo */
-    flex: 1;  /* Faz com que o conteúdo ocupe o espaço restante */
+  padding: 10px;
+  flex: 1;
+  color: #333;
+}
+
+.card:hover {
+  border: 1px solid #b9b9b9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
-    font-size: 18px;
-    font-weight: bold;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.card-description, .card-date {
-    font-size: 16px;
-}
-
-.card-title, .card-description, .card-content {
-    color: #777777;  /* Cor do texto mais escura */
+.card-description,
+.card-date {
+  font-size: 16px;
 }
 
 .card-city {
-        font-size: 14px;
-        color: #777;
-        display: flex;              /* Ativa o modo flexbox na span */
-        align-items: center;        /* Alinha o texto no centro verticalmente */
-        justify-content: center;    /* Centraliza o texto horizontalmente */
-        height: 100%;               /* Faz a span ocupar toda a altura do container pai (div-content) */
-        padding: 10px;         /* Adiciona um leve espaçamento à esquerda */
-        margin-top: auto;
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 10px;
+  margin-top: auto;
 }
