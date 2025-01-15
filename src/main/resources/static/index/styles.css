@@ -18,7 +18,7 @@ body {
 
 header {
     background: linear-gradient(to right, #2a3b4c, #c9c9c9);
-    color: white;
+    color: #ccc;
     width: 100%; /* Garantir que o cabeçalho preencha toda a largura */
     height: 50px; /* Altura do cabeçalho ajustada para 50px */
     box-sizing: border-box; /* Garantir que o padding não afete a altura */
@@ -186,10 +186,10 @@ button.submit-btn:hover {
 footer {
     background: linear-gradient(to right, #2a3b4c, #c9c9c9);
     color: white;
-    width: 100%; /* Garantir que o rodapé preencha toda a largura */
+    width: 100%;
     padding: 14px 0;
     text-align: center;
-    margin-top: auto; /* Garante que o footer fique sempre na parte inferior */
+    margin-top: auto;
 }
 
 footer p {

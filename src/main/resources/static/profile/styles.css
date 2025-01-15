@@ -41,7 +41,7 @@ header nav {
 }
 
 header nav a {
-  color: white;
+  color: #ccc;
   text-decoration: none;
   padding: 0 20px; /* Remove padding superior/inferior */
   height: 40px; /* Define altura dos botões */
