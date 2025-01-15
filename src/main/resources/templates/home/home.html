@@ -4,7 +4,7 @@
     <base href="/"/>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>City Vibe - Eventos</title>
+    <title>City Vibe</title>
 
     <style>
         /* Global styles */
@@ -22,7 +22,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            min-height: 100%
+            min-height: 200vh;
         }
 
         header {
@@ -37,7 +37,12 @@
 
         header h1 {
             font-size: 1.4rem;
-            margin: 0;
+            text-align: center;
+            margin: 0; /* Remove a margem padrão */
+            padding: 0; /* Remove o padding se houver */
+            display: flex; /* Faz o h1 ser um item flexível */
+            align-items: center; /* Alinha verticalmente */
+            justify-content: center; /* Garante que o conteúdo esteja centrado horizontalmente */
         }
 
         header nav {
@@ -48,12 +53,16 @@
         header nav a {
             color: white;
             text-decoration: none;
-            padding: 0 20px;
-            height: 40px;
-            line-height: 40px;
-            background-color: #1e2a35;
+            padding: 0 20px; /* Remove padding superior/inferior */
+            height: 40px; /* Define altura dos botões */
+            line-height: 40px; /* Centraliza o texto verticalmente */
+            background-color: #1e2a35; /* Azul mais claro para botões */
             border-radius: 5px;
+            margin: 0 10px;
             transition: background-color 0.3s;
+            display: flex; /* Torna o botão um container flexível */
+            align-items: center; /* Alinha o conteúdo verticalmente */
+            justify-content: center; /* Garante que o conteúdo seja centralizado horizontalmente */
         }
 
         header nav a:hover {
@@ -171,6 +180,8 @@
         footer p {
             color: #ccc;
         }
+
+
     </style>
 
     <script>
@@ -313,6 +324,7 @@
     <h1>City Vibe</h1>
     <nav>
         <a href="/login" class="btn">Login</a>
+        <a href="/index" class="btn">Publicar</a>
     </nav>
 </header>
 
