@@ -19,12 +19,12 @@ body {
 header {
     background: linear-gradient(to right, #2a3b4c, #c9c9c9);
     color: #ccc;
-    width: 100%; /* Garantir que o cabeçalho preencha toda a largura */
-    height: 50px; /* Altura do cabeçalho ajustada para 50px */
-    box-sizing: border-box; /* Garantir que o padding não afete a altura */
-    display: flex; /* Usar flexbox para alinhar verticalmente */
-    align-items: center; /* Alinha os itens verticalmente no centro */
-    justify-content: space-around; /* Alinha os itens com espaço entre eles */
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 
@@ -32,11 +32,11 @@ header {
 header h1 {
     font-size: 1.4rem;
     text-align: center;
-    margin: 0; /* Remove a margem padrão */
-    padding: 0; /* Remove o padding se houver */
-    display: flex; /* Faz o h1 ser um item flexível */
-    align-items: center; /* Alinha verticalmente */
-    justify-content: center; /* Garante que o conteúdo esteja centrado horizontalmente */
+    margin: 0;
+    padding: 0
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 header nav {
@@ -48,19 +48,19 @@ header nav a {
     color: white;
     text-decoration: none;
     padding: 0 20px; /* Remove padding superior/inferior */
-    height: 40px; /* Define altura dos botões */
-    line-height: 40px; /* Centraliza o texto verticalmente */
-    background-color: #1e2a35; /* Azul mais claro para botões */
+    height: 40px;
+    line-height: 40px;
+    background-color: #1e2a35;
     border-radius: 5px;
     margin: 0 10px;
     transition: background-color 0.3s;
-    display: flex; /* Torna o botão um container flexível */
-    align-items: center; /* Alinha o conteúdo verticalmente */
-    justify-content: center; /* Garante que o conteúdo seja centralizado horizontalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center; /
 }
 
 header nav a:hover {
-    background-color: #18222d; /* Azul mais escuro no hover */
+    background-color: #18222d;
 }
 
 /* Main */
@@ -231,7 +231,6 @@ footer p {
 .radio-option {
     display: flex;
     align-items: center;
-
 }
 
 .radio-option label {
@@ -301,3 +300,20 @@ footer p {
 .radio-option input[type="radio"]:focus + label {
     border: 2px solid #3b6ba3; /* Bordas mais destacadas quando o campo recebe o foco */
 }
+
+
+ .card-image-wrapper {
+          position: relative;
+ }
+
+ .price-badge {
+           position: absolute;
+           top: 10px;
+           left: 10px;
+           background-color: #ffffff;
+           color: #444;
+           font-size: 1rem;
+           padding: 5px 10px;
+           border-radius: 5px;
+           z-index: 10;
+           }

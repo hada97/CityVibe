@@ -57,7 +57,13 @@ async function carregarMeusEventos() {
       card.classList.add("card");
 
       card.innerHTML = `
-            <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
+      <div class="card-image-wrapper">
+                      <div class="price-badge">
+                          ${evento.custo === "gratuito" ? 'Gratuito' : 'Pago'}
+                      </div>
+                      <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
+                  </div>
+
             <div class="div-content">
                 <div class="card-content">
                     <h3 class="card-title">${evento.nome}</h3>
