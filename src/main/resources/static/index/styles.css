@@ -24,19 +24,13 @@ header {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 20px; /* Espaçamento nas laterais */
 }
 
-
-
 header h1 {
-    font-size: 1.4rem;
-    text-align: center;
-    margin: 0;
-    padding: 0
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 1.4rem;
+  margin: 0;
 }
 
 header nav {
@@ -56,7 +50,7 @@ header nav a {
     transition: background-color 0.3s;
     display: flex;
     align-items: center;
-    justify-content: center; /
+    justify-content: center;
 }
 
 header nav a:hover {
@@ -106,7 +100,6 @@ h1 {
     font-size: 1rem;
     height: 40px;
     transition: border-color 0.3s ease;
-
 }
 
 .select-box {
@@ -124,7 +117,7 @@ h1 {
 }
 
 /* Campos de entrada */
-.textarea{
+.textarea {
     width: 100%;
     padding: 12px;
     border-radius: 5px;
@@ -181,7 +174,6 @@ button.submit-btn {
 button.submit-btn:hover {
     background-color: #315b87; /* Azul mais escuro no hover */
 }
-
 
 footer {
     background: linear-gradient(to right, #2a3b4c, #c9c9c9);
@@ -250,7 +242,6 @@ footer p {
     outline: none;
 }
 
-
 /* Estilização dos campos de "Evento gratuito" e "Evento pago" */
 .cost-options {
     display: flex;
@@ -258,7 +249,6 @@ footer p {
     align-items: center;
     gap: 10px;
 }
-
 
 .radio-option {
     display: flex;
@@ -286,7 +276,6 @@ footer p {
     align-items: center; /* Centraliza o conteúdo verticalmente no flexbox */
 }
 
-
 .radio-option label:hover {
     background-color: #315b87; /* Azul mais escuro ao passar o mouse */
 }
@@ -301,19 +290,18 @@ footer p {
     border: 2px solid #3b6ba3; /* Bordas mais destacadas quando o campo recebe o foco */
 }
 
+.card-image-wrapper {
+    position: relative;
+}
 
- .card-image-wrapper {
-          position: relative;
- }
-
- .price-badge {
-           position: absolute;
-           top: 10px;
-           left: 10px;
-           background-color: #ffffff;
-           color: #444;
-           font-size: 1rem;
-           padding: 5px 10px;
-           border-radius: 5px;
-           z-index: 10;
-           }
+.price-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ffffff;
+    color: #444;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 10;
+}

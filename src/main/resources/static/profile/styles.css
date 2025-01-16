@@ -12,8 +12,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100%
+  justify-content: flex-start;
+  min-height: 100vh; /* Ajustado para garantir que a altura mínima da tela ocupe 100% da altura da viewport */
 }
 
 header {
@@ -24,15 +24,13 @@ header {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 20px; /* Espaçamento nas laterais */
 }
 
 header h1 {
   font-size: 1.4rem;
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 header nav {
@@ -79,16 +77,15 @@ h1 {
 }
 
 /* Footer */
- footer {
-    background: linear-gradient(to right, #2a3b4c, #c9c9c9);
-    color: white;
-    width: 100%;
-    padding: 14px 0;
-    text-align: center;
-    margin-top: auto;
-    position: fixed;
-    bottom: 0;
-    z-index: 10;
+footer {
+  background: linear-gradient(to right, #2a3b4c, #c9c9c9);
+  color: white;
+  width: 100%;
+  padding: 14px 0;
+  text-align: center;
+  margin-top: auto;
+  position: relative; /* Alterado para não ficar fixo */
+  z-index: 10;
 }
 
 footer p {
@@ -197,18 +194,18 @@ button.submit-btn:hover {
   margin-top: auto;
 }
 
- .card-image-wrapper {
-          position: relative;
- }
+.card-image-wrapper {
+  position: relative;
+}
 
- .price-badge {
-           position: absolute;
-           top: 10px;
-           left: 10px;
-           background-color: #ffffff;
-           color: #444;
-           font-size: 1rem;
-           padding: 5px 10px;
-           border-radius: 5px;
-           z-index: 10;
-           }
+.price-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ffffff;
+  color: #444;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 10;
+}
