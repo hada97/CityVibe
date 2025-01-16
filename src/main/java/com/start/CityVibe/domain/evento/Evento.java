@@ -59,7 +59,7 @@ public class Evento {
     private String link;
 
     @Column(name = "custo", nullable = false)
-    private String custo;  // "gratuito" ou "pago"
+    private String custo;
 
 
     public EventoDTO toDTO() {
