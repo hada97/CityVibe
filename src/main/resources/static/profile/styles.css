@@ -1,4 +1,3 @@
-/* Global styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,14 +5,16 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Poppins", sans-serif;
   background: linear-gradient(to right, #777777, #c9c9c9);
-  color: #f1f1f1; /* Texto claro para contraste */
+  color: #f1f1f1;
   display: flex;
+  font-size: 16px;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh; /* Ajustado para garantir que a altura mínima da tela ocupe 100% da altura da viewport */
+  justify-content: center;
+  min-height: 200vh;
+  line-height: 1.5;
 }
 
 header {
@@ -21,11 +22,10 @@ header {
   color: #ccc;
   width: 100%;
   height: 50px;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px; /* Espaçamento nas laterais */
+  padding: 0 20px;
 }
 
 header h1 {
@@ -57,74 +57,31 @@ header nav a:hover {
   background-color: #18222d;
 }
 
-/* Main */
+.search-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+#search {
+  padding: 10px;
+  width: 289px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 main {
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 0 auto;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
   width: 100%;
+  margin-top: 40px;
 }
 
-/* Título dentro do Main */
-h1 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-/* Footer */
-footer {
-  background: linear-gradient(to right, #2a3b4c, #c9c9c9);
-  color: white;
-  width: 100%;
-  padding: 14px 0;
-  text-align: center;
-  margin-top: auto;
-  position: relative; /* Alterado para não ficar fixo */
-  z-index: 10;
-}
-
-footer p {
-  color: #ccc;
-}
-
-/* Botão de enviar */
-button.submit-btn {
-  padding: 0;
-  height: 40px;
-  background-color: #3b6ba3;
-  color: white;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 100%;
-}
-
-button.submit-btn:hover {
-  background-color: #315b87;
-}
-
-/* Barra de pesquisa */
-.search-container {
-  text-align: center;
-  margin: 20px 0;
-}
-
-#search {
-  padding: 10px;
-  width: 300px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-/* Contêiner dos Cards */
 .event-cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(636px, 1fr));
@@ -159,32 +116,46 @@ button.submit-btn:hover {
   width: 636px;
   height: 159px;
   object-fit: cover;
-  border-top: 8px;
+}
+
+.price-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ffffff;
+  color: #444;
+  font-size: 1rem; /* Adjusted for better readability */
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 10;
 }
 
 .card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   flex: 1;
   color: #333;
+  height: 100%;
 }
 
 .card:hover {
-  border: 1px solid #b9b9b9;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
-  font-size: 18px;
+  font-size: 16px; /* Adjusted for consistency */
   font-weight: bold;
 }
 
 .card-description,
 .card-date {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .card-city {
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   display: flex;
   align-items: center;
@@ -194,18 +165,68 @@ button.submit-btn:hover {
   margin-top: auto;
 }
 
+footer {
+  background: linear-gradient(to right, #2a3b4c, #c9c9c9);
+  color: white;
+  width: 100%;
+  padding: 14px 0;
+  text-align: center;
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+}
+
+footer p {
+  color: #ccc;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 120px;
+  text-align: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.empresa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .card-image-wrapper {
   position: relative;
 }
 
-.price-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #ffffff;
-  color: #444;
-  font-size: 1rem;
-  padding: 5px 10px;
-  border-radius: 5px;
-  z-index: 10;
+/* Additional adjustments for font size consistency */
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #555;
+}
+
+.card-city {
+  font-size: 16px;
+}
+
+/* Optional: Improve responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+
+  .event-cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  #search {
+    width: 80%;
+  }
 }
