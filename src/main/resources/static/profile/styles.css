@@ -169,7 +169,7 @@ footer {
   background: linear-gradient(to right, #2a3b4c, #c9c9c9);
   color: white;
   width: 100%;
-  padding: 14px 0;
+  padding: 6px 0;
   text-align: center;
   margin-top: auto;
   position: fixed;
@@ -199,6 +199,8 @@ footer p {
 }
 
 .card-image-wrapper {
+  width: 636px;
+  height: 159px;
   position: relative;
 }
 
