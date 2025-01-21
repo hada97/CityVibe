@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Evento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos adicionais para a página de detalhes */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        .event-detail-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .event-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .event-description {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .event-date {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .event-location {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="event-detail-container">
+    <h1 class="event-title" id="event-title">Carregando...</h1>
+    <p class="event-description" id="event-description">Carregando...</p>
+    <p class="event-date" id="event-date">Carregando...</p>
+    <p class="event-location" id="event-location">Carregando...</p>
+</div>
+
+<script>
+    const baseUrl = "https://city-vibe-cjc3gae3fphaa9gu.canadacentral-01.azurewebsites.net";
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventoId = urlParams.get("id");
+    const apiUrlEventoDetalhes = `${baseUrl}/eventos/${eventoId}`;
+
+    async function carregarDetalhesEvento() {
+        try {
+            const response = await fetch(apiUrlEventoDetalhes);
+            if (!response.ok) {
+                throw new Error("Evento não encontrado");
+            }
+
+            const evento = await response.json();
+
+            // Atualizar a página com as informações do evento
+            document.getElementById("event-title").textContent = evento.nome;
+            document.getElementById("event-description").textContent = evento.descricao;
+            document.getElementById("event-date").textContent = `${new Date(evento.data).toLocaleDateString()} às ${new Date(`${evento.data}T${evento.hora}`).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+            document.getElementById("event-location").textContent = evento.cidade;
+        } catch (error) {
+            console.error("Erro ao carregar detalhes do evento:", error);
+            alert("Erro ao carregar detalhes do evento.");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", carregarDetalhesEvento);
+</script>
+
+</body>
+</html>

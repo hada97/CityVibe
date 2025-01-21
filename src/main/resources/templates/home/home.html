@@ -271,6 +271,9 @@
               const card = document.createElement("div");
               card.classList.add("card");
 
+            const cardLink = document.createElement("a");
+            cardLink.href = /evento.html;  // O ID do evento será passado na URL
+
               card.innerHTML = `
             <div class="card-image-wrapper">
                 <div class="price-badge">
@@ -329,36 +332,40 @@
             const container = document.getElementById("event-cards-container");
             container.innerHTML = "";
 
-            eventos.forEach((evento) => {
-              const card = document.createElement("div");
-              card.classList.add("card");
+            eventos.forEach((evento) => { 
+            const card = document.createElement("div");
+            card.classList.add("card");
 
-              card.innerHTML = `
-                    <div class="card-image-wrapper">
-                      <div class="price-badge">
-                          ${evento.custo === "gratuito" ? 'Gratuito' : 'Pago'}
-                      </div>
-                      <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
-                  </div>
-                      <div class="div-content">
-                          <div class="card-content">
-                              <h3 class="card-title">${evento.nome}</h3>
-                              <p class="card-description">${evento.descricao}</p>
-                              <p class="card-date">
-                                  ${new Date(evento.data).toLocaleDateString()} às
-                                  ${new Date(
-                                    `${evento.data}T${evento.hora}`
-                                  ).toLocaleTimeString([], {
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                  })}
-                              </p>
-                          </div>
-                          <span class="card-city">${evento.cidade}</span>
-                      </div>
-                      `;
-              container.appendChild(card);
-            });
+            // Aqui criamos um link para a página de detalhes do evento
+            const cardLink = document.createElement("a");
+            cardLink.href = `/evento.html?id=${evento.id}`;  // O ID do evento será passado na URL
+
+            cardLink.innerHTML = `
+            <div class="card-image-wrapper">
+                <div class="price-badge">
+                    ${evento.custo === "gratuito" ? 'Gratuito' : 'Pago'}
+                </div>
+                <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
+            </div>
+            <div class="div-content">
+                <div class="card-content">
+                    <h3 class="card-title">${evento.nome}</h3>
+                    <p class="card-description">${evento.descricao}</p>
+                    <p class="card-date">
+                        ${new Date(evento.data).toLocaleDateString()} às
+                        ${new Date(`${evento.data}T${evento.hora}`).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                    </p>
+                </div>
+                <span class="card-city">${evento.cidade}</span>
+            </div>
+            `;
+
+            // Adiciona o link como filho do card
+            card.appendChild(cardLink);
+
+            // Adiciona o card à lista de eventos
+            container.appendChild(card);
+          });
           } catch (error) {
             console.error("Erro ao buscar eventos:", error);
             alert("Erro ao buscar eventos.");

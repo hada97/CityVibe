@@ -22,6 +22,11 @@ public class ViewController {
         return "home/home";
     }
 
+    @GetMapping("/evento")
+    public String evento() {
+        return "evento/evento";
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login/login";
