@@ -114,6 +114,33 @@
             box-sizing: border-box;
         }
 
+        .card.expanded {
+            height: 350px;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            flex: 1;
+            color: #333;
+            height: 100%;
+        }
+
+        .card-extra {
+            display: none;
+            font-size: 14px;
+            color: #333;
+            padding: 10px;
+            flex: 1;
+            height: 100%;
+        }
+
+        .card.expanded .card-extra {
+            display: block;
+        }
+
         .div-content {
             display: flex;
             justify-content: space-between;
@@ -133,20 +160,10 @@
             left: 10px;
             background-color: #ffffff;
             color: #444;
-            font-size: 1rem; /* Adjusted for better readability */
+            font-size: 1rem;
             padding: 5px 10px;
             border-radius: 5px;
             z-index: 10;
-        }
-
-        .card-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 10px;
-            flex: 1;
-            color: #333;
-            height: 100%;
         }
 
         .card:hover {
@@ -154,7 +171,7 @@
         }
 
         .card-title {
-            font-size: 16px; /* Adjusted for consistency */
+            font-size: 16px;
             font-weight: bold;
         }
 
@@ -211,7 +228,6 @@
             position: relative;
         }
 
-        /* Additional adjustments for font size consistency */
         h1 {
             font-size: 2rem;
         }
@@ -225,7 +241,6 @@
             font-size: 16px;
         }
 
-        /* Optional: Improve responsiveness for smaller screens */
         @media (max-width: 768px) {
             .card {
                 width: 100%;
@@ -241,149 +256,152 @@
         }
     </style>
 
-
     <script>
         let userId = null;
-        const baseUrl = "https://city-vibe-cjc3gae3fphaa9gu.canadacentral-01.azurewebsites.net";
+        const baseUrl = "http://localhost:8080";
         const apiUrlEventos = `${baseUrl}/eventos`;
         const token = localStorage.getItem("authToken");
         const apiUrlBuscarEventos = `${baseUrl}/eventos/buscar`;
 
         async function carregarEventos() {
-          try {
-            const response = await fetch(apiUrlEventos, {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
-            if (!response.ok) {
-              throw new Error("Falha ao carregar os eventos");
+            try {
+                const response = await fetch(apiUrlEventos, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                if (!response.ok) {
+                    throw new Error("Falha ao carregar os eventos");
+                }
+
+                const data = await response.json();
+                const eventos = data.content;
+                const container = document.getElementById("event-cards-container");
+                container.innerHTML = "";
+
+                eventos.forEach((evento) => {
+                    const card = document.createElement("div");
+                    card.classList.add("card");
+
+                    card.innerHTML = `
+                    <div class="card-image-wrapper">
+                        <div class="price-badge">
+                            ${evento.custo === "gratuito" ? 'Gratuito' : 'Pago'}
+                        </div>
+                        <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
+                    </div>
+                    <div class="div-content">
+                      <div class="card-content">
+                        <h3 class="card-title">${evento.nome}</h3>
+                        <p class="card-description">${evento.descricao}</p>
+                        <p class="card-date">
+                          ${new Date(evento.data).toLocaleDateString()} às
+                          ${new Date(`${evento.data}T${evento.hora}`).toLocaleTimeString(
+                            [], { hour: "2-digit", minute: "2-digit" }
+                          )}
+                        </p>
+                      </div>
+                      <span class="card-city">${evento.cidade}</span>
+                    </div>
+                    <div class="card-extra">
+                        <p><strong>Endereço:</strong> ${evento.endereco}</p>
+                        <p><strong>Autor:</strong> ${evento.user.nome}</p>
+                    </div>
+                  `;
+
+                    card.addEventListener("click", () => {
+                        card.classList.toggle("expanded");
+                    });
+
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Erro ao carregar eventos:", error);
+                alert("Erro ao carregar eventos.");
             }
-
-            const data = await response.json();
-            const eventos = data.content;
-            const container = document.getElementById("event-cards-container");
-            container.innerHTML = "";
-
-            eventos.forEach((evento) => {
-              const card = document.createElement("div");
-              card.classList.add("card");
-
-              card.innerHTML = `
-            <div class="card-image-wrapper">
-                <div class="price-badge">
-                    ${evento.custo === "gratuito" ? 'Gratuito' : 'Pago'}
-                </div>
-                <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
-            </div>
-            <div class="div-content">
-              <div class="card-content">
-                <h3 class="card-title">${evento.nome}</h3>
-                <p class="card-description">${evento.descricao}</p>
-                <p class="card-date">
-                  ${new Date(evento.data).toLocaleDateString()} às
-                  ${new Date(`${evento.data}T${evento.hora}`).toLocaleTimeString(
-                    [],
-                    {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    }
-                  )}
-                </p>
-              </div>
-              <span class="card-city">${evento.cidade}</span>
-            </div>
-          `;
-              container.appendChild(card);
-            });
-          } catch (error) {
-            console.error("Erro ao carregar eventos:", error);
-            alert("Erro ao carregar eventos.");
-          }
         }
 
         async function BuscarEventoPornome() {
-          const nome = document.getElementById("search").value.trim();
-          if (!nome) return carregarEventos();
+            const nome = document.getElementById("search").value.trim();
+            if (!nome) return carregarEventos();
 
-          try {
-            const response = await fetch(
-              `${apiUrlBuscarEventos}?nome=${encodeURIComponent(nome)}`,
-              {
-                method: "GET",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            );
+            try {
+                const response = await fetch(
+                    `${apiUrlBuscarEventos}?nome=${encodeURIComponent(nome)}`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
 
-            if (!response.ok) {
-              throw new Error("Falha ao buscar eventos");
-            }
+                if (!response.ok) {
+                    throw new Error("Falha ao buscar eventos");
+                }
 
-            const data = await response.json();
-            const eventos = data.content;
+                const data = await response.json();
+                const eventos = data.content;
 
-            const container = document.getElementById("event-cards-container");
-            container.innerHTML = "";
+                const container = document.getElementById("event-cards-container");
+                container.innerHTML = "";
 
-            eventos.forEach((evento) => {
-              const card = document.createElement("div");
-              card.classList.add("card");
+                eventos.forEach((evento) => {
+                    const card = document.createElement("div");
+                    card.classList.add("card");
 
-              card.innerHTML = `
-                    <div class="card-image-wrapper">
-                      <div class="price-badge">
-                          ${evento.custo === "gratuito" ? 'Gratuito' : 'Pago'}
-                      </div>
-                      <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
-                  </div>
-                      <div class="div-content">
-                          <div class="card-content">
-                              <h3 class="card-title">${evento.nome}</h3>
-                              <p class="card-description">${evento.descricao}</p>
-                              <p class="card-date">
-                                  ${new Date(evento.data).toLocaleDateString()} às
-                                  ${new Date(
-                                    `${evento.data}T${evento.hora}`
-                                  ).toLocaleTimeString([], {
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                  })}
-                              </p>
+                    card.innerHTML = `
+                        <div class="card-image-wrapper">
+                          <div class="price-badge">
+                              ${evento.custo === "gratuito" ? 'Gratuito' : 'Pago'}
                           </div>
-                          <span class="card-city">${evento.cidade}</span>
+                          <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
                       </div>
+                          <div class="div-content">
+                              <div class="card-content">
+                                  <h3 class="card-title">${evento.nome}</h3>
+                                  <p class="card-description">${evento.descricao}</p>
+                                  <p class="card-date">
+                                      ${new Date(evento.data).toLocaleDateString()} às
+                                      ${new Date(
+                                        `${evento.data}T${evento.hora}`
+                                      ).toLocaleTimeString([], {
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                      })}
+                                  </p>
+                              </div>
+                              <span class="card-city">${evento.cidade}</span>
+                          </div>
                       `;
-              container.appendChild(card);
-            });
-          } catch (error) {
-            console.error("Erro ao buscar eventos:", error);
-            alert("Erro ao buscar eventos.");
-          }
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Erro ao buscar eventos:", error);
+                alert("Erro ao buscar eventos.");
+            }
         }
 
         const fetchUserId = async () => {
-          try {
-            const response = await fetch(`${baseUrl}/users/login/id`, {
-              headers: { Authorization: `Bearer ${token}` },
-            });
-            if (!response.ok) throw new Error("Falha ao obter o userId");
+            try {
+                const response = await fetch(`${baseUrl}/users/login/id`, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+                if (!response.ok) throw new Error("Falha ao obter o userId");
 
-            userId = await response.json();
-            console.log("User ID:", userId);
-          } catch (error) {
-            console.error("Erro ao buscar userId:", error);
-          }
+                userId = await response.json();
+                console.log("User ID:", userId);
+            } catch (error) {
+                console.error("Erro ao buscar userId:", error);
+            }
         };
 
         document.addEventListener("DOMContentLoaded", () => {
-          carregarEventos();
-          fetchUserId();
+            carregarEventos();
+            fetchUserId();
         });
     </script>
-
 </head>
 <body>
 <header>
@@ -396,7 +414,6 @@
 
 <div class="container">
     <h1></h1>
-
     <h2>Encontre e compartilhe eventos em todos os lugares</h2>
 </div>
 

@@ -13,9 +13,8 @@ import java.util.List;
 @Repository
 public interface EventoRepository extends JpaRepository<Evento, Long> {
 
-
-    @Query("SELECT e FROM Evento e WHERE CONCAT(e.data, ' ', e.hora) > CURRENT_TIMESTAMP")
-    Page<Evento> findUpcomingEvents(Pageable pageable); // Método que retorna apenas os eventos futuros
+    //@Query("SELECT e FROM Evento e WHERE e.dataHora > CURRENT_TIMESTAMP")
+    //Page<Evento> findUpcomingEvents(Pageable pageable);
 
     Page<Evento> findByNomeContainingIgnoreCase(String nome, Pageable pageable);
 
