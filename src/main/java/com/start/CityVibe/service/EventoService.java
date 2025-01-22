@@ -24,6 +24,7 @@ public class EventoService {
 
     // Método para listar todos os eventos
     public Page<Evento> listarEventos(Pageable pageable) {
+        //return eventoRepository.findUpcomingEvents(pageable);
         return eventoRepository.findAll(pageable);
     }
 
