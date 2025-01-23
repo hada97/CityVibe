@@ -129,16 +129,14 @@
         }
 
         .card-extra {
-            display: none;
+            display: none; /* Inicialmente oculta */
             font-size: 14px;
             color: #333;
-            padding: 10px;
-            flex: 1;
-            height: 100%;
+
         }
 
         .card.expanded .card-extra {
-            display: block;
+            display: block; /* Exibe quando expandido */
         }
 
         .div-content {
@@ -258,7 +256,7 @@
 
     <script>
         let userId = null;
-        const baseUrl = "https://city-vibe-cjc3gae3fphaa9gu.canadacentral-01.azurewebsites.net";
+        const baseUrl = "http://localhost:8080";
         const apiUrlEventos = `${baseUrl}/eventos`;
         const token = localStorage.getItem("authToken");
         const apiUrlBuscarEventos = `${baseUrl}/eventos/buscar`;
@@ -297,16 +295,16 @@
                         <p class="card-description">${evento.descricao}</p>
                         <p class="card-date">
                           ${new Date(evento.data).toLocaleDateString()} às
-                          ${new Date(`${evento.data}T${evento.hora}`).toLocaleTimeString(
-                            [], { hour: "2-digit", minute: "2-digit" }
-                          )}
+                          ${new Date(`${evento.data}T${evento.hora}`).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                         </p>
+
+                        <!-- Novo conteúdo que aparece ao expandir -->
+                        <div class="card-extra">
+                            <p><strong>Endereço:</strong> ${evento.endereco}</p>
+                            <p><strong>Autor:</strong> ${evento.user.name}</p>
+                        </div>
                       </div>
                       <span class="card-city">${evento.cidade}</span>
-                    </div>
-                    <div class="card-extra">
-                        <p><strong>Endereço:</strong> ${evento.endereco}</p>
-                        <p><strong>Autor:</strong> ${evento.user.nome}</p>
                     </div>
                   `;
 

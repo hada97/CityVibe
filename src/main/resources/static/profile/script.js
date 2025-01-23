@@ -1,7 +1,6 @@
 let userId = null;
-const baseUrl = "https://city-vibe-cjc3gae3fphaa9gu.canadacentral-01.azurewebsites.net";
+const baseUrl = "http://localhost:8080";
 const token = localStorage.getItem("authToken");
-
 
 // Função para obter o ID do usuário
 const fetchUserId = async () => {
@@ -32,7 +31,7 @@ async function carregarMeusEventos() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -58,28 +57,37 @@ async function carregarMeusEventos() {
 
       card.innerHTML = `
       <div class="card-image-wrapper">
-                      <div class="price-badge">
-                          ${evento.custo === "gratuito" ? 'Gratuito' : 'Pago'}
-                      </div>
-                      <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
-                  </div>
+          <div class="price-badge">
+              ${evento.custo === "gratuito" ? "Gratuito" : "Pago"}
+          </div>
+          <img src="${evento.capa}" alt="${evento.nome}" class="card-image">
+      </div>
+      <div class="div-content">
+        <div class="card-content">
+          <h3 class="card-title">${evento.nome}</h3>
+          <p class="card-description">${evento.descricao}</p>
+          <p class="card-date">
+            ${new Date(evento.data).toLocaleDateString()} às
+            ${new Date(`${evento.data}T${evento.hora}`).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </p>
 
-            <div class="div-content">
-                <div class="card-content">
-                    <h3 class="card-title">${evento.nome}</h3>
-                    <p class="card-description">${evento.descricao}</p>
-                    <p class="card-date">
-                        ${new Date(evento.data).toLocaleDateString()}
-                        às
-                        ${new Date(`${evento.data}T${evento.hora}`).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                    </p>
-                </div>
-                <span class="card-city">${evento.cidade}</span> <!-- Adicionando o nome da cidade -->
-            </div>
-        `;
+          <!-- Novo conteúdo que aparece ao expandir -->
+          <div class="card-extra">
+              <p><strong>Endereço:</strong> ${evento.endereco}</p>
+              <p><strong>Autor:</strong> ${evento.user.name}</p>
+          </div>
+        </div>
+        <span class="card-city">${evento.cidade}</span>
+      </div>
+    `;
+
+      // Expande o card ao clicar
+      card.addEventListener("click", () => {
+        card.classList.toggle("expanded");
+      });
 
       container.appendChild(card);
     });
@@ -88,7 +96,6 @@ async function carregarMeusEventos() {
     alert("Erro ao carregar eventos.");
   }
 }
-
 
 // Função para fazer o logout
 function logout() {
@@ -100,5 +107,5 @@ function logout() {
 // Inicialização ao carregar o DOM
 document.addEventListener("DOMContentLoaded", async () => {
   await fetchUserId();
-  carregarMeusEventos()
+  carregarMeusEventos();
 });
