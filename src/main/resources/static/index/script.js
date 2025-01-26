@@ -32,15 +32,17 @@ const fetchUserId = async () => {
     const response = await fetch(`${baseUrl}/users/login/id`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-
-    if (!response.ok) throw new Error("Falha ao obter o userId");
-
+    if (!response.ok) {
+      console.log("Usuário não logado");
+      return; // Sai da função 
+    }
     userId = await response.json();
     console.log("User ID:", userId);
   } catch (error) {
-    console.error("Erro ao buscar userId:", error);
+    console.log("Usuário não logado");
   }
 };
+
 
 // Formulário para registrar um novo evento
 document
@@ -65,7 +67,6 @@ document
     const cost = document.querySelector('input[name="evento"]:checked').value;
     const description = document.querySelector('textarea[placeholder="Descrição do evento"]').value;
     const eventCover = document.querySelector('#event-cover').value;
-
     const fullDateTime = `${date}T${time}:00`;
 
     // Criar o objeto de dados a serem enviados para a API
