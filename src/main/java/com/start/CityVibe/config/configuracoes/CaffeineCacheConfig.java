@@ -1,4 +1,4 @@
-package com.start.CityVibe.infra.config;
+package com.start.CityVibe.config.configuracoes;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;

@@ -1,26 +1,26 @@
 package com.start.CityVibe.domain.evento;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class EventoDTO {
 
-    private Long id;
-
     @NotBlank
     private String nome;
 
+    @Future
     private Date data;
 
     private Date hora;
 
+    @NotNull
     private String descricao;
 
+    @NotNull
     private TipoEvento tipoEvento;
 
     private Long userId;
@@ -34,8 +34,10 @@ public class EventoDTO {
     @NotBlank
     private String endereco;
 
+    @NotNull
     private String link;
 
+    @NotBlank
     private String custo;
 
 }

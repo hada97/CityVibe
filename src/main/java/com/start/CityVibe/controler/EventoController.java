@@ -2,12 +2,12 @@ package com.start.CityVibe.controler;
 
 import com.start.CityVibe.domain.evento.*;
 import com.start.CityVibe.service.EventoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,9 +19,9 @@ public class EventoController {
 
 
     @PostMapping
-    public ResponseEntity<EventoDetail> criarEvento(@RequestBody EventoDTO eventoDTO) {
+    public ResponseEntity<EventoDetail> criarEvento(@RequestBody @Valid EventoDTO eventoDTO) {
         var event = eventoService.salvarEvento(eventoDTO);
-        return ResponseEntity.ok(event);
+        return ResponseEntity.status(201).body(event);
     }
 
 
@@ -75,7 +75,7 @@ public class EventoController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<EventoDetail> atualizarEvento(@PathVariable Long id, @RequestBody EventoUpdateDTO eventoUpdateDTO) {
+    public ResponseEntity<EventoDetail> atualizarEvento(@PathVariable Long id, @RequestBody @Valid EventoUpdateDTO eventoUpdateDTO) {
         EventoDetail eventoAtualizado = eventoService.atualizarEvento(id, eventoUpdateDTO);
         if (eventoAtualizado != null) {
             return new ResponseEntity<>(eventoAtualizado, HttpStatus.OK);

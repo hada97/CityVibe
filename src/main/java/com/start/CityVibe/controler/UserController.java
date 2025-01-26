@@ -6,14 +6,15 @@ import com.start.CityVibe.repository.UserRepository;
 import com.start.CityVibe.service.EventoService;
 import com.start.CityVibe.service.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+
 
 @RestController
 @RequestMapping("/users")
@@ -29,6 +30,9 @@ public class UserController {
     @Autowired
     private EventoService eventoService;
 
+    // URL para revogar o token de acesso do Google
+    private static final String GOOGLE_REVOKE_URL = "https://oauth2.googleapis.com/revoke?token=";
+
     @GetMapping
     public Page<User> getUsers(
             @RequestParam(defaultValue = "0") int page,
@@ -43,7 +47,6 @@ public class UserController {
             @RequestParam(defaultValue = "5") int size) {
         return eventoService.getEventosByUserId(id, page, size);
     }
-
 
     // Endpoint de login via OAuth2
     @GetMapping("/login/oauth2/code/google")
@@ -78,7 +81,6 @@ public class UserController {
     }
 
 
-
     @PostMapping("/register")
     public ResponseEntity<UserDetail> createUser(@RequestBody @Valid UserDto user) {
 
@@ -88,8 +90,16 @@ public class UserController {
         }
         userService.registerNewUser(user.email(), user.name());
         UserDetail userDetail = new UserDetail(user.name(), null);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(userDetail);
+    }
+
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(OAuth2AuthenticationToken authentication, HttpServletRequest request) {
+        // Invalidar a sessão após revogar o token
+        request.getSession().invalidate();
+        // Retorna sucesso se tudo ocorrer bem
+        return ResponseEntity.ok().build();
     }
 
 

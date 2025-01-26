@@ -1,4 +1,4 @@
-package com.start.CityVibe.infra.RestConfig;
+package com.start.CityVibe.config.RestConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

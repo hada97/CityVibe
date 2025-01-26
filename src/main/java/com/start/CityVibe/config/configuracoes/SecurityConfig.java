@@ -1,4 +1,4 @@
-package com.start.CityVibe.infra.config;
+package com.start.CityVibe.config.configuracoes;
 
 import com.start.CityVibe.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

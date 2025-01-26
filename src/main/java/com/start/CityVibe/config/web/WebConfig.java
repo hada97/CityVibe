@@ -1,4 +1,4 @@
-package com.start.CityVibe.infra.web;
+package com.start.CityVibe.config.web;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;

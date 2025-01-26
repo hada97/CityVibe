@@ -99,9 +99,24 @@ async function carregarMeusEventos() {
 
 // Função para fazer o logout
 function logout() {
-  alert("Você saiu!");
-  localStorage.removeItem("authToken"); // Remove o token de autenticação
-  window.location.href = "/"; // Redireciona para a página de login
+  fetch(`${baseUrl}/users/logout`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("Você saiu!");
+      window.location.href = "/";
+    } else {
+      alert("Erro ao tentar sair.");
+    }
+  })
+  .catch(error => {
+    console.error("Erro na comunicação com o servidor:", error);
+    alert("Erro ao tentar sair.");
+  });
 }
 
 // Inicialização ao carregar o DOM

@@ -3,11 +3,28 @@ const baseUrl = "http://localhost:8080";
 const apiUrlEventos = `${baseUrl}/eventos`;
 const token = localStorage.getItem("authToken");
 
-// Logout
+
 function logout() {
-  alert("Você saiu!");
-  window.location.href = "/";
+  fetch(`${baseUrl}/users/logout`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("Você saiu!");
+      window.location.href = "/";
+    } else {
+      alert("Erro ao tentar sair.");
+    }
+  })
+  .catch(error => {
+    console.error("Erro na comunicação com o servidor:", error);
+    alert("Erro ao tentar sair.");
+  });
 }
+
 
 // Busca o userId na inicialização
 const fetchUserId = async () => {
@@ -93,29 +110,6 @@ document
     }
   });
 
-// Carregar o nome do usuário após login
-/*
-fetch(fetch(`${baseUrl}/api/user/profile`, {
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    const userNameElement = document.getElementById("user-name");
-    if (userNameElement) {
-      userNameElement.innerText = data.name;
-    } else {
-      console.error("Elemento com id 'user-name' não encontrado.");
-    }
-  })
-  .catch((error) => {
-    console.error("Erro ao carregar o nome do usuário:", error);
-    const userNameElement = document.getElementById("user-name");
-    if (userNameElement) {
-      userNameElement.innerText = "Erro ao carregar o nome";
-    }
-  });*/
 
 // Inicialização ao carregar o DOM
 document.addEventListener("DOMContentLoaded", async () => {

@@ -64,7 +64,6 @@ public class Evento {
 
     public EventoDTO toDTO() {
         return new EventoDTO(
-                this.id,
                 this.nome,
                 this.data,
                 this.hora,
