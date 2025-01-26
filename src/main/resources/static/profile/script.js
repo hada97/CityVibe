@@ -1,5 +1,5 @@
 let userId = null;
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://city-vibe-cjc3gae3fphaa9gu.canadacentral-01.azurewebsites.net";
 const token = localStorage.getItem("authToken");
 
 // Função para obter o ID do usuário
